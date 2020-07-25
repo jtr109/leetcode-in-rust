@@ -1,5 +1,7 @@
 # LeetCode in Rust
 
+![Unittest](https://github.com/jtr109/leetcode-in-rust/workflows/Unittest/badge.svg)
+
 Resolving problems of LeetCode in RustLang.
 
 ## Solusions
