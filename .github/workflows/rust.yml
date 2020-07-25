@@ -1,4 +1,4 @@
-name: Rust Unittest
+name: Unittest
 
 on:
   push:
