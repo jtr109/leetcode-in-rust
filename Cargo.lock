@@ -3,3 +3,8 @@
 [[package]]
 name = "reverse_integer"
 version = "0.1.0"
+
+[[package]]
+name = "three_sum"
+version = "0.1.0"
+
