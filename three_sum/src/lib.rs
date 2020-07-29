@@ -1,28 +1,32 @@
 #![allow(dead_code)]
 
+use std::collections::{HashMap, HashSet};
+
 struct Solution {}
 
 impl Solution {
     pub fn three_sum(nums: Vec<i32>) -> Vec<Vec<i32>> {
         let mut sorted = nums.clone();
         sorted.sort();
-        let mut sums = vec![];
+        let mut num_map = HashMap::new();
+        for (i, n) in sorted.iter().enumerate() {
+            num_map.entry(n).or_insert(vec![]).push(i);
+        }
+        let mut sums = HashSet::new();
+
         for i in 0..sorted.len() {
-            let mut j = i + 1;
-            let mut k = sorted.len() - 1;
-            while j < k {
-                let group = vec![sorted[i], sorted[j], sorted[k]];
-                match group.iter().sum::<i32>() {
-                    s if s < 0 => j += 1,
-                    s if s > 0 => k -= 1,
-                    _ => {
-                        sums.push(group);
-                        break;
+            for j in (i + 2..sorted.len()).rev() {
+                let n = sorted[i];
+                let m = sorted[j];
+                let expected = 0 - n - m;
+                if let Some(indices) = num_map.get(&expected) {
+                    if indices.iter().filter(|&&k| i < k && k < j).count() > 0 {
+                        sums.insert(vec![n, expected, m]);
                     }
                 }
             }
         }
-        sums
+        sums.iter().cloned().collect()
     }
 }
 
@@ -31,12 +35,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_example() {
+    fn test_example1() {
         let given = vec![-1, 0, 1, 2, -1, -4];
-        let mut expected: Vec<Vec<i32>> = vec![vec![-1, 0, 1], vec![-1, -1, 2]];
-        let mut got = Solution::three_sum(given);
-        expected.sort();
-        got.sort();
-        assert_eq!(got, expected);
+        let expected: Vec<Vec<i32>> = vec![vec![-1, 0, 1], vec![-1, -1, 2]];
+        let got = Solution::three_sum(given);
+        assert_eq!(
+            got.iter().cloned().collect::<HashSet<Vec<i32>>>(),
+            expected.iter().cloned().collect::<HashSet<Vec<i32>>>(),
+        );
+    }
+
+    #[test]
+    fn test_example2() {
+        let given = vec![-2, 0, 1, 1, 2];
+        let expected: Vec<Vec<i32>> = vec![vec![-2, 0, 2], vec![-2, 1, 1]];
+        let got = Solution::three_sum(given);
+        assert_eq!(
+            got.iter().cloned().collect::<HashSet<Vec<i32>>>(),
+            expected.iter().cloned().collect::<HashSet<Vec<i32>>>(),
+        );
     }
 }
