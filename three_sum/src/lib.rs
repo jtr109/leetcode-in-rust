@@ -1,38 +1,45 @@
 #![allow(dead_code)]
 
-use std::collections::{HashMap, HashSet};
-
 struct Solution {}
 
 impl Solution {
     pub fn three_sum(nums: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut num_map = HashMap::new();
-        for n in nums.iter() {
-            *num_map.entry(n).or_insert(0) += 1;
-        }
-        let mut sums = HashSet::new();
+        let mut sums = vec![];
+        let mut sorted = nums.clone();
+        sorted.sort();
 
-        let keys: Vec<&i32> = num_map.keys().cloned().collect();
-        for &&n in keys.iter() {
-            for &&m in keys.iter() {
-                let expected = 0 - m - n;
-                let group = vec![n, m, expected];
-                let mut group_map = HashMap::new();
-                for k in group.iter() {
-                    *group_map.entry(k).or_insert(0) += 1;
+        for i in 0..sorted.len() {
+            let n = sorted[i];
+            if i > 0 && sorted[i - 1] == n {
+                continue;
+            }
+            if n > 0 {
+                break;
+            }
+            let (mut low, mut high) = (i + 1, sorted.len() - 1);
+            while low < high {
+                let group = vec![n, sorted[low], sorted[high]];
+                let s: i32 = group.iter().sum();
+                if s < 0 {
+                    low += 1;
+                    continue;
+                } else if s > 0 {
+                    high -= 1;
+                    continue;
                 }
-                if group_map
-                    .iter()
-                    .all(|(&k, &count)| *num_map.get(k).unwrap_or(&0) >= count)
-                {
-                    let mut g = group.clone();
-                    g.sort();
-                    sums.insert(g);
+                sums.push(group);
+                while low < high && sorted[low] == sorted[low + 1] {
+                    low += 1;
                 }
+                while low < high && sorted[high] == sorted[high - 1] {
+                    high -= 1;
+                }
+                low += 1;
+                high -= 1;
             }
         }
 
-        sums.iter().cloned().collect()
+        sums
     }
 }
 
