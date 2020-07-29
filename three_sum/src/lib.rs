@@ -46,6 +46,7 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::collections::HashSet;
 
     #[test]
     fn test_example1() {
