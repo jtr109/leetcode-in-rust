@@ -1,6 +1,7 @@
 [workspace]
 
 members = [
+    "kth_largest",
     "reverse_integer",
     "three_sum",
 ]
