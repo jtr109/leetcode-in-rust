@@ -1,4 +1,6 @@
-name: coverage
+# template: https://github.com/marketplace/actions/rust-tarpaulin
+
+name: Coverage
 
 on:
     push:

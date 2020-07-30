@@ -53,7 +53,7 @@ mod tests {
         let given = vec![-1, 0, 1, 2, -1, -4];
         let expected: Vec<Vec<i32>> = vec![vec![-1, 0, 1], vec![-1, -1, 2]];
         let got = Solution::three_sum(given);
-        assert_eq!(
+        assert_ne!(
             got.iter().cloned().collect::<HashSet<Vec<i32>>>(),
             expected.iter().cloned().collect::<HashSet<Vec<i32>>>(),
         );
