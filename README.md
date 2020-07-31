@@ -7,5 +7,6 @@ Resolving problems of LeetCode in RustLang.
 
 ## Solusions
 
-* [7. Reverse Integer](./reverse_integer/README.md)
-* [15. 3 Sum](./three_sum/README.md)
+* [7. Reverse Integer](./reverse_integer/src/lib.rs)
+* [15. 3 Sum](./three_sum/src/lib.rs)
+* [215. Kth Largest Element in an Array](./kth_largest/src/lib.rs)

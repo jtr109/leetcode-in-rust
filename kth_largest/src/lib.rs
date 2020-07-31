@@ -1,8 +1,15 @@
-#![allow(dead_code)]
-
 /*!
- * It works but slower than:
- * ```rust,ignore
+ * # 215. Kth Largest Element in an Array
+ *
+ * * [Problem link](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+ *
+ * ## Other Solutions
+ *
+ * The solution works but slower than sort all elements and get by index in Rust like below.
+ *
+ * ```rust,no_run
+ * # struct Solution {}
+ *
  * impl Solution {
  *     pub fn find_kth_largest(nums: Vec<i32>, k: i32) -> i32 {
  *         let mut nums = nums;
@@ -11,7 +18,9 @@
  *     }
  * }
  * ```
-*/
+ */
+
+#![allow(dead_code)]
 
 struct Solution {}
 
