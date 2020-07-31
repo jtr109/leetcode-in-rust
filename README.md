@@ -10,3 +10,7 @@ Resolving problems of LeetCode in RustLang.
 * [7. Reverse Integer](./reverse_integer/src/lib.rs)
 * [15. 3 Sum](./three_sum/src/lib.rs)
 * [215. Kth Largest Element in an Array](./kth_largest/src/lib.rs)
+
+## References
+
+* [LeetcodeTop](https://github.com/afatcoder/LeetcodeTop): Top Hit Leetcode problems in interviews.
