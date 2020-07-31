@@ -5,7 +5,7 @@
 
 Resolving problems of LeetCode in RustLang.
 
-## Solusions
+## Solutions
 
 * [7. Reverse Integer](./reverse_integer/src/lib.rs)
 * [15. 3 Sum](./three_sum/src/lib.rs)
