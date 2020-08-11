@@ -6,4 +6,5 @@ members = [
     "three_sum",
     "binary_tree_postorder_traversal",
     "two_sum",
+    "implement_queue_using_stacks",
 ]
