@@ -4,4 +4,5 @@ members = [
     "kth_largest",
     "reverse_integer",
     "three_sum",
+    "binary_tree_postorder_traversal",
 ]
