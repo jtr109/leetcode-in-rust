@@ -64,11 +64,7 @@ mod tests {
 
     #[test]
     fn test_example() {
-        let three = Some(Rc::new(RefCell::new(TreeNode {
-            val: 3,
-            left: None,
-            right: None,
-        })));
+        let three = Some(Rc::new(RefCell::new(TreeNode::new(3))));
         let two = Some(Rc::new(RefCell::new(TreeNode {
             val: 2,
             left: three,
