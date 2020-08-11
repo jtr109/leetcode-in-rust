@@ -7,4 +7,5 @@ members = [
     "binary_tree_postorder_traversal",
     "two_sum",
     "implement_queue_using_stacks",
+    "merge_sorted_array",
 ]
