@@ -43,7 +43,18 @@ use std::rc::Rc;
 
 impl Solution {
     pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        vec![3, 2, 1]
+        match root {
+            None => return vec![],
+            Some(n) => {
+                let left = n.borrow().left.clone();
+                let right = n.borrow().right.clone();
+                let val = n.borrow().val;
+                let left_vec = Self::postorder_traversal(left);
+                let right_vec = Self::postorder_traversal(right);
+                let val_vec = vec![val];
+                return [left_vec, right_vec, val_vec].concat();
+            }
+        }
     }
 }
 
