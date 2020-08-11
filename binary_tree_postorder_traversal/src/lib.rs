@@ -14,6 +14,8 @@
  * > 3. Access the data part of the current node.
  */
 
+#![allow(dead_code)]
+
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
     pub val: i32,
@@ -41,6 +43,32 @@ use std::rc::Rc;
 
 impl Solution {
     pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        vec![]
+        vec![3, 2, 1]
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_example() {
+        let three = Some(Rc::new(RefCell::new(TreeNode {
+            val: 3,
+            left: None,
+            right: None,
+        })));
+        let two = Some(Rc::new(RefCell::new(TreeNode {
+            val: 2,
+            left: three,
+            right: None,
+        })));
+        let input = Some(Rc::new(RefCell::new(TreeNode {
+            val: 1,
+            left: None,
+            right: two,
+        })));
+        let output = vec![3, 2, 1];
+        assert_eq!(Solution::postorder_traversal(input), output);
     }
 }
