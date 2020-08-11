@@ -5,4 +5,5 @@ members = [
     "reverse_integer",
     "three_sum",
     "binary_tree_postorder_traversal",
+    "two_sum",
 ]
