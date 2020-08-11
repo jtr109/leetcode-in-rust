@@ -11,6 +11,12 @@ Resolving problems of LeetCode in RustLang.
 * [15. 3 Sum](./three_sum/src/lib.rs)
 * [215. Kth Largest Element in an Array](./kth_largest/src/lib.rs)
 
+## Document
+
+```shell
+cargo doc --open -p <package_name>
+```
+
 ## References
 
 * [LeetcodeTop](https://github.com/afatcoder/LeetcodeTop): Top Hit Leetcode problems in interviews.
