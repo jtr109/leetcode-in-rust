@@ -8,4 +8,5 @@ members = [
     "two_sum",
     "implement_queue_using_stacks",
     "merge_sorted_array",
+    "intersection_of_two_arrays",
 ]
