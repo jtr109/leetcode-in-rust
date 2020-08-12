@@ -12,7 +12,32 @@ struct Solution {}
 
 impl Solution {
     pub fn intersection(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
-        vec![]
+        let mut sorted1 = nums1;
+        let mut sorted2 = nums2;
+        sorted1.sort();
+        sorted2.sort();
+        let (mut i, mut j) = (0, 0);
+        let mut inter = vec![];
+        while i < sorted1.len() && j < sorted2.len() {
+            let n1 = sorted1[i];
+            let n2 = sorted2[j];
+            if n1 < n2 {
+                i += 1;
+            } else if n1 > n2 {
+                j += 1;
+            } else {
+                inter.push(n1);
+                i += 1;
+                j += 1;
+                while i < sorted1.len() && sorted1[i] == n1 {
+                    i += 1;
+                }
+                while j < sorted2.len() && sorted2[j] == n1 {
+                    j += 1;
+                }
+            }
+        }
+        inter
     }
 }
 
