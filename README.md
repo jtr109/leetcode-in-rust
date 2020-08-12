@@ -14,6 +14,7 @@ Resolving problems of LeetCode in RustLang.
 * [145. Binary Tree Postorder Traversal](./binary_tree_postorder_traversal/src/lib.rs)
 * [215. Kth Largest Element in an Array](./kth_largest/src/lib.rs)
 * [232. Implement Queue using Stacks](./implement_queue_using_stacks/src/lib.rs)
+* [349. Intersection of Two Arrays](./intersection_of_two_arrays/src/lib.rs)
 
 ## Document
 

@@ -9,6 +9,10 @@ name = "implement_queue_using_stacks"
 version = "0.1.0"
 
 [[package]]
+name = "intersection_of_two_arrays"
+version = "0.1.0"
+
+[[package]]
 name = "kth_largest"
 version = "0.1.0"
 
