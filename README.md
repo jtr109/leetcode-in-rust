@@ -8,6 +8,7 @@ Resolving problems of LeetCode in RustLang.
 ## Solutions
 
 * [1. Two Sum](./two_sum/src/lib.rs)
+* [5. Longest Palindromic Substring](./longest_palindromic_substring/lib.rs)
 * [7. Reverse Integer](./reverse_integer/src/lib.rs)
 * [15. 3 Sum](./three_sum/src/lib.rs)
 * [88. Merge Sorted Array](./merge_sorted_array/src/lib.rs)
@@ -25,3 +26,5 @@ cargo doc --open -p <package_name>
 ## References
 
 * [LeetcodeTop](https://github.com/afatcoder/LeetcodeTop): Top Hit Leetcode problems in interviews.
+* [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
+* [LeetCode Cookbook](https://books.halfrost.com/leetcode/)

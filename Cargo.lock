@@ -17,6 +17,10 @@ name = "kth_largest"
 version = "0.1.0"
 
 [[package]]
+name = "longest_palindromic_substring"
+version = "0.1.0"
+
+[[package]]
 name = "merge_sorted_array"
 version = "0.1.0"
 
