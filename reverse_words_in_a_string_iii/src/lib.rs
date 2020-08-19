@@ -12,7 +12,31 @@ struct Solution {}
 
 impl Solution {
     pub fn reverse_words(s: String) -> String {
-        "".to_string()
+        let mut i = 0;
+        let chars = s.chars().collect::<Vec<char>>();
+        let mut reversed = vec![];
+        while i < s.len() {
+            if chars[i] == ' ' {
+                reversed.push(chars[i]);
+                i += 1;
+                continue;
+            }
+            let mut j = i;
+            while j < s.len() && chars[j] != ' ' {
+                j += 1;
+            }
+            let mut k = j - 1;
+            loop {
+                // push the char into the reversed vector until reach the index `i`
+                reversed.push(chars[k]);
+                if k == i {
+                    break;
+                }
+                k -= 1;
+            }
+            i = j;
+        }
+        reversed.iter().collect()
     }
 }
 
