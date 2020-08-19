@@ -10,4 +10,5 @@ members = [
     "merge_sorted_array",
     "intersection_of_two_arrays",
     "longest_palindromic_substring",
+    "reverse_words_in_a_string_iii",
 ]
