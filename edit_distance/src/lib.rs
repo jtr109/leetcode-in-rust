@@ -12,7 +12,21 @@ struct Solution {}
 
 impl Solution {
     pub fn min_distance(word1: String, word2: String) -> i32 {
-        3
+        if word1.len() == 0 {
+            return word2.len() as i32;
+        }
+        if word2.len() == 0 {
+            return word1.len() as i32;
+        }
+        let w1 = word1[1..].to_string();
+        let w2 = word2[1..].to_string();
+        if word1.chars().next().unwrap() == word2.chars().next().unwrap() {
+            return Solution::min_distance(w1.clone(), w2.clone());
+        }
+        let insert = 1 + Solution::min_distance(word1.clone(), w2.clone()); // insert the first char of word2 in front of word1
+        let delete = 1 + Solution::min_distance(w1.clone(), word2.clone()); // delete the first char of word1
+        let edit = 1 + Solution::min_distance(w1.clone(), w2.clone()); // change from the first char of word1 to the one of word2
+        *[insert, delete, edit].iter().min().unwrap()
     }
 }
 
