@@ -10,23 +10,37 @@ struct Solution {}
 
 // ----------------------------------------------------------------------------
 
+use std::collections::HashMap;
+
 impl Solution {
-    pub fn min_distance(word1: String, word2: String) -> i32 {
-        if word1.len() == 0 {
-            return word2.len() as i32;
+    pub fn reduce_min_distance(
+        word1: String,
+        word2: String,
+        cache: &mut HashMap<(String, String), usize>,
+    ) -> usize {
+        let (length1, length2) = (word1.len(), word2.len());
+        if length1 == 0 || length2 == 0 {
+            let min = length1.max(length2);
+            cache.insert((word1.clone(), word2.clone()), min);
+            return min;
         }
-        if word2.len() == 0 {
-            return word1.len() as i32;
-        }
-        let w1 = word1[1..].to_string();
-        let w2 = word2[1..].to_string();
+        let word1_slice = word1[1..].to_string();
+        let word2_slice = word2[1..].to_string();
         if word1.chars().next().unwrap() == word2.chars().next().unwrap() {
-            return Solution::min_distance(w1.clone(), w2.clone());
+            return Solution::reduce_min_distance(word1_slice.clone(), word2_slice.clone(), cache);
         }
-        let insert = 1 + Solution::min_distance(word1.clone(), w2.clone()); // insert the first char of word2 in front of word1
-        let delete = 1 + Solution::min_distance(w1.clone(), word2.clone()); // delete the first char of word1
-        let edit = 1 + Solution::min_distance(w1.clone(), w2.clone()); // change from the first char of word1 to the one of word2
-        *[insert, delete, edit].iter().min().unwrap()
+        let insert = 1 + Solution::reduce_min_distance(word1.clone(), word2_slice.clone(), cache); // insert the first char of word2 in front of word1
+        let delete = 1 + Solution::reduce_min_distance(word1_slice.clone(), word2.clone(), cache); // delete the first char of word1
+        let edit =
+            1 + Solution::reduce_min_distance(word1_slice.clone(), word2_slice.clone(), cache); // change from the first char of word1 to the one of word2
+        let min = *[insert, delete, edit].iter().min().unwrap();
+        cache.insert((word1.clone(), word2.clone()), min);
+        min
+    }
+
+    pub fn min_distance(word1: String, word2: String) -> i32 {
+        let mut cache = HashMap::new();
+        Self::reduce_min_distance(word1, word2, &mut cache) as i32
     }
 }
 
