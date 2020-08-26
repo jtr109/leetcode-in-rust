@@ -5,6 +5,10 @@ name = "binary_tree_postorder_traversal"
 version = "0.1.0"
 
 [[package]]
+name = "edit_distance"
+version = "0.1.0"
+
+[[package]]
 name = "implement_queue_using_stacks"
 version = "0.1.0"
 
