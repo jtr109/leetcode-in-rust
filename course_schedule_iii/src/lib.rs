@@ -27,7 +27,7 @@ impl Solution {
             {
                 let max = selected.pop().unwrap();
                 selected.push(c);
-                deadline = duration - max[0] + duration;
+                deadline = deadline - max[0] + duration;
                 continue;
             }
         }
@@ -60,5 +60,22 @@ mod tests {
     fn test_example_3() {
         let courses = vec![vec![3, 2], vec![4, 3]];
         assert_eq!(Solution::schedule_course(courses), 0);
+    }
+
+    #[test]
+    fn test_submission_1() {
+        let courses = vec![
+            vec![7, 16],
+            vec![2, 3],
+            vec![3, 12],
+            vec![3, 14],
+            vec![10, 19],
+            vec![10, 16],
+            vec![6, 8],
+            vec![6, 11],
+            vec![3, 13],
+            vec![6, 16],
+        ];
+        assert_eq!(Solution::schedule_course(courses), 4);
     }
 }
