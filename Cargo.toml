@@ -12,4 +12,5 @@ members = [
     "longest_palindromic_substring",
     "reverse_words_in_a_string_iii",
     "edit_distance",
+    "running_sum_of_1d_array",
 ]

@@ -37,10 +37,13 @@ name = "reverse_words_in_a_string_iii"
 version = "0.1.0"
 
 [[package]]
+name = "running_sum_of_1d_array"
+version = "0.1.0"
+
+[[package]]
 name = "three_sum"
 version = "0.1.0"
 
 [[package]]
 name = "two_sum"
 version = "0.1.0"
-
