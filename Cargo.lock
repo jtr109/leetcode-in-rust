@@ -33,6 +33,10 @@ name = "merge_sorted_array"
 version = "0.1.0"
 
 [[package]]
+name = "prefix_and_suffix_search"
+version = "0.1.0"
+
+[[package]]
 name = "reverse_integer"
 version = "0.1.0"
 
