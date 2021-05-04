@@ -5,6 +5,10 @@ name = "binary_tree_postorder_traversal"
 version = "0.1.0"
 
 [[package]]
+name = "course_schedule_iii"
+version = "0.1.0"
+
+[[package]]
 name = "edit_distance"
 version = "0.1.0"
 
@@ -26,6 +30,14 @@ version = "0.1.0"
 
 [[package]]
 name = "merge_sorted_array"
+version = "0.1.0"
+
+[[package]]
+name = "non_decreasing_array"
+version = "0.1.0"
+
+[[package]]
+name = "prefix_and_suffix_search"
 version = "0.1.0"
 
 [[package]]

@@ -13,4 +13,7 @@ members = [
     "reverse_words_in_a_string_iii",
     "edit_distance",
     "running_sum_of_1d_array",
+    "course_schedule_iii",
+    "prefix_and_suffix_search",
+    "non_decreasing_array",
 ]
