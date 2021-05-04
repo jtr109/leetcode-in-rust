@@ -20,12 +20,13 @@ impl WordFilter {
             if word.len() < prefix.len().max(suffix.len()) {
                 continue;
             }
+            println!("word: {}", word);
             // query prefix
             let mut word_chars = word.chars();
             let mut prefix_chars = prefix.chars();
             while let Some(c) = prefix_chars.next() {
                 if word_chars.next().unwrap() != c {
-                    break 'word_loop;
+                    continue 'word_loop;
                 }
             }
             // query suffix
@@ -33,7 +34,7 @@ impl WordFilter {
             let mut suffix_chars_rev = suffix.chars().rev();
             while let Some(c) = suffix_chars_rev.next() {
                 if word_chars_rev.next().unwrap() != c {
-                    break 'word_loop;
+                    continue 'word_loop;
                 }
             }
             return index as i32;
@@ -52,8 +53,7 @@ mod test {
         let prefix = "a".to_string();
         let suffix = "e".to_string();
         let expected = 0;
-        let obj = WordFilter::new(words);
-        assert_eq!(obj.f(prefix, suffix), expected);
+        assert_eq!(WordFilter::new(words).f(prefix, suffix), expected);
     }
 
     #[test]
