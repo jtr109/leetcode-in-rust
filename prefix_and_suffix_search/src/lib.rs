@@ -17,7 +17,7 @@ impl Trie {
         if c as usize >= 'a' as usize && c as usize <= 'z' as usize {
             c as usize - 'a' as usize
         } else {
-            27
+            26
         }
     }
 
@@ -55,39 +55,30 @@ impl Trie {
 }
 
 pub struct WordFilter {
-    words: Vec<String>,
+    trie: Trie,
 }
 
 impl WordFilter {
     pub fn new(words: Vec<String>) -> Self {
-        WordFilter { words }
+        let mut trie = Trie::new();
+        for (index, word) in words.iter().enumerate() {
+            for pattern in Self::all_patterns(word).iter() {
+                trie.add(index, pattern);
+            }
+        }
+        WordFilter { trie }
+    }
+
+    fn all_patterns(word: &str) -> Vec<String> {
+        let mut res = vec![];
+        for i in 0..word.len() {
+            res.push(String::new() + &word[i..word.len()] + "#" + &word);
+        }
+        res
     }
 
     pub fn f(&self, prefix: String, suffix: String) -> i32 {
-        'word_loop: for (index, word) in self.words.iter().enumerate().rev() {
-            if word.len() < prefix.len().max(suffix.len()) {
-                continue;
-            }
-            println!("word: {}", word);
-            // query prefix
-            let mut word_chars = word.chars();
-            let mut prefix_chars = prefix.chars();
-            while let Some(c) = prefix_chars.next() {
-                if word_chars.next().unwrap() != c {
-                    continue 'word_loop;
-                }
-            }
-            // query suffix
-            let mut word_chars_rev = word.chars().rev();
-            let mut suffix_chars_rev = suffix.chars().rev();
-            while let Some(c) = suffix_chars_rev.next() {
-                if word_chars_rev.next().unwrap() != c {
-                    continue 'word_loop;
-                }
-            }
-            return index as i32;
-        }
-        -1
+        self.trie.search(&(String::new() + &suffix + "#" + &prefix))
     }
 }
 
