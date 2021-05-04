@@ -6,6 +6,53 @@
  * let ret_1: i32 = obj.f(prefix, suffix);
  */
 
+#[derive(Clone)]
+struct Trie {
+    children: Vec<Option<Box<Trie>>>,
+    index: i32,
+}
+
+impl Trie {
+    fn get_char_index(c: char) -> usize {
+        if c as usize >= 'a' as usize && c as usize <= 'z' as usize {
+            c as usize - 'a' as usize
+        } else {
+            27
+        }
+    }
+
+    fn new() -> Self {
+        Self {
+            children: vec![None; 27],
+            index: -1,
+        }
+    }
+
+    fn add(&mut self, index: usize, chars: &str) {
+        match chars.chars().nth(0) {
+            None => self.index = index as i32,
+            Some(c) => {
+                let c_index = Self::get_char_index(c);
+                let child = self.children[c_index].get_or_insert(Box::new(Self::new()));
+                child.add(index, &chars[1..]);
+            }
+        }
+    }
+
+    fn search(&self, chars: &str) -> i32 {
+        match chars.chars().nth(0) {
+            None => self.index,
+            Some(c) => {
+                let c_index = Self::get_char_index(c);
+                match &self.children[c_index] {
+                    None => -1,
+                    Some(child) => child.search(&chars[1..]),
+                }
+            }
+        }
+    }
+}
+
 pub struct WordFilter {
     words: Vec<String>,
 }
@@ -46,6 +93,13 @@ impl WordFilter {
 #[cfg(test)]
 mod test {
     use super::*;
+
+    #[test]
+    fn test_trie() {
+        let mut root = Trie::new();
+        root.add(1, "foo");
+        assert_eq!(root.search("foo"), 1);
+    }
 
     #[test]
     fn example_1() {
