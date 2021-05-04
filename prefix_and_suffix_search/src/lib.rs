@@ -97,8 +97,12 @@ mod test {
     #[test]
     fn test_trie() {
         let mut root = Trie::new();
-        root.add(1, "foo");
-        assert_eq!(root.search("foo"), 1);
+        root.add(0, "foo");
+        root.add(1, "bar");
+        root.add(3, "biz");
+        assert_eq!(root.search("foo"), 0);
+        assert_eq!(root.search("bar"), 1);
+        assert_eq!(root.search("biz"), 3);
     }
 
     #[test]
