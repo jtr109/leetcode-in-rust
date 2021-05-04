@@ -30,13 +30,14 @@ impl Trie {
 
     fn add(&mut self, index: usize, chars: &str) {
         match chars.chars().nth(0) {
-            None => self.index = index as i32,
+            None => (),
             Some(c) => {
                 let c_index = Self::get_char_index(c);
                 let child = self.children[c_index].get_or_insert(Box::new(Self::new()));
                 child.add(index, &chars[1..]);
             }
         }
+        self.index = index as i32; // mark index on the whole branch
     }
 
     fn search(&self, chars: &str) -> i32 {
@@ -103,6 +104,9 @@ mod test {
         assert_eq!(root.search("foo"), 0);
         assert_eq!(root.search("bar"), 1);
         assert_eq!(root.search("biz"), 3);
+        assert_eq!(root.search("buz"), -1);
+        assert_eq!(root.search("fo"), 0);
+        assert_eq!(root.search("b"), 3);
     }
 
     #[test]
