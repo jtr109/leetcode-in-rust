@@ -16,4 +16,5 @@ members = [
     "course_schedule_iii",
     "prefix_and_suffix_search",
     "non_decreasing_array",
+    "jump_game_ii",
 ]
