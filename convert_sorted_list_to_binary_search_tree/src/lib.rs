@@ -41,3 +41,32 @@ impl Solution {
         None
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn example_1() {
+        let head = vec![-10, -3, 0, 5, 9];
+        let expected = vec![Some(0), Some(-3), Some(9), Some(-10), None, Some(5)];
+    }
+
+    #[test]
+    fn example_2() {
+        let head: Vec<i32> = vec![];
+        let expected: Vec<i32> = vec![];
+    }
+
+    #[test]
+    fn example_3() {
+        let head = vec![0];
+        let expected = vec![0];
+    }
+
+    #[test]
+    fn example_4() {
+        let head = vec![1, 3];
+        let expected = vec![3, 1];
+    }
+}
