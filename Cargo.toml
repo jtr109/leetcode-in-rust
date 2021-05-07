@@ -17,4 +17,5 @@ members = [
     "prefix_and_suffix_search",
     "non_decreasing_array",
     "jump_game_ii",
+    "convert_sorted_list_to_binary_search_tree",
 ]
