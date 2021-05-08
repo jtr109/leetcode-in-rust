@@ -1,3 +1,8 @@
+/*
+ * https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/598/week-1-may-1st-may-7th/3734/
+ * https://leetcode.com/problems/delete-operation-for-two-strings/
+*/
+
 #[cfg(test)]
 mod tests {
     #[test]
