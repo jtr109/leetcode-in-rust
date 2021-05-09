@@ -7,14 +7,33 @@ pub struct Solution {}
 impl Solution {
     pub fn is_possible(target: Vec<i32>) -> bool {
         let mut target = target;
-        while !target.iter().any(|&x| x < 1) {
-            if target.iter().all(|&x| x == 1) {
+        loop {
+            let mut any_num_less_than_one = false;
+            let mut all_nums_are_one = true;
+            let mut max_num = 0;
+            let mut max_index = 0;
+            let mut sum = 0;
+            for (i, &n) in target.iter().enumerate() {
+                if !any_num_less_than_one && n < 1 {
+                    any_num_less_than_one = true;
+                }
+                if all_nums_are_one && n != 1 {
+                    all_nums_are_one = false;
+                }
+                sum += n;
+                if max_num < n {
+                    max_index = i;
+                    max_num = n;
+                }
+            }
+            if any_num_less_than_one {
+                return false;
+            }
+            if all_nums_are_one {
                 return true;
             }
-            let (max_index, &max_num) = target.iter().enumerate().max_by_key(|(_, &x)| x).unwrap();
-            target[max_index] = 2 * max_num - target.iter().sum::<i32>();
+            target[max_index] = 2 * target[max_index] - sum;
         }
-        false
     }
 }
 
