@@ -12,7 +12,7 @@ impl Solution {
             .count() as i32
     }
 
-    pub fn is_prime(x: &i32) -> bool {
+    fn is_prime(x: &i32) -> bool {
         *x > 1 && !(2..*x).filter(|i| i * i <= *x).any(|i| *x % i == 0)
     }
 }
