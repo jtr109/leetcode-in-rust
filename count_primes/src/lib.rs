@@ -13,7 +13,7 @@ impl Solution {
     }
 
     pub fn is_prime(x: &i32) -> bool {
-        *x > 1 && !(2..*x).any(|i| *x % i == 0)
+        *x > 1 && !(2..*x).filter(|i| i * i <= *x).any(|i| *x % i == 0)
     }
 }
 
