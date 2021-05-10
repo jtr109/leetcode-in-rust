@@ -1,5 +1,10 @@
 /*
- * https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/599/week-2-may-8th-may-14th/3737/
+ * ## 题目
+ *
+ * * https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/599/week-2-may-8th-may-14th/3737/
+ * * https://leetcode.com/problems/construct-target-array-with-multiple-sums/
+ *
+ * ## 分析
  *
  * 这道题的核心是使用 max binary heap 而非 vector 来处理数据，避免多次轮训目标数组判断最大数。
  *
