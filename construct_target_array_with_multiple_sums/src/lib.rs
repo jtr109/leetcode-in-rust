@@ -8,6 +8,12 @@ pub struct Solution {}
 
 impl<'a> Solution {
     pub fn is_possible(target: Vec<i32>) -> bool {
+        if target.len() == 1 {
+            match target.iter().nth(0) {
+                Some(1) => return true,
+                _ => return false,
+            }
+        }
         let mut heap = BinaryHeap::new();
         let mut sum = 0;
         for e in target.iter() {
@@ -15,16 +21,27 @@ impl<'a> Solution {
             sum += e;
         }
         loop {
-            let max = heap.pop().unwrap();
+            // 提取堆中最大的数字
+            let mut max = heap.pop().unwrap();
             if max == 1 {
                 return true;
             }
-            let stuff = 2 * max - sum;
-            if stuff < 1 {
-                return false;
+            let second_max = *heap.peek().unwrap();
+            loop {
+                // 处理最大数字直到它不是最大的
+                let stuff = 2 * max - sum; // 计划插入对象
+                if stuff < 1 {
+                    return false;
+                } else if stuff == 1 && second_max == 1 {
+                    return true;
+                }
+                sum -= max - stuff;
+                if stuff < second_max {
+                    heap.push(stuff);
+                    break;
+                }
+                max = stuff;
             }
-            sum -= max - stuff;
-            heap.push(stuff);
         }
     }
 }
@@ -67,5 +84,11 @@ mod test {
     fn submission_3() {
         let target = vec![1, 1, 61, 9, 17];
         assert!(Solution::is_possible(target));
+    }
+
+    #[test]
+    fn submission_4() {
+        let target = vec![2];
+        assert!(!Solution::is_possible(target));
     }
 }
