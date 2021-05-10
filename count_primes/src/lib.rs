@@ -5,16 +5,41 @@
 pub struct Solution {}
 
 impl Solution {
-    /// a normal way
-    pub fn count_primes(n: i32) -> i32 {
-        (0..n)
-            .filter(|x| *x == 2 || *x % 2 != 0)
-            .filter(|x| Self::is_prime(x))
-            .count() as i32
-    }
+    // /// a normal way
+    // pub fn count_primes(n: i32) -> i32 {
+    //     (0..n)
+    //         .filter(|x| *x == 2 || *x % 2 != 0)
+    //         .filter(|x| Self::is_prime(x))
+    //         .count() as i32
+    // }
 
-    fn is_prime(x: &i32) -> bool {
-        *x > 1 && !(2..*x).filter(|i| i * i <= *x).any(|i| *x % i == 0)
+    // fn is_prime(x: &i32) -> bool {
+    //     *x > 1 && !(2..*x).filter(|i| i * i <= *x).any(|i| *x % i == 0)
+    // }
+
+    pub fn count_primes(n: i32) -> i32 {
+        if n < 2 {
+            return 0;
+        }
+        let n = n as usize;
+        let mut nums = vec![true; n];
+        nums[0] = false;
+        nums[1] = false;
+        for i in 2..n {
+            if i * i >= n {
+                break;
+            }
+            if !nums[i] {
+                continue;
+            }
+            for times in i..n {
+                if times * i >= n {
+                    break;
+                }
+                nums[times * i] = false;
+            }
+        }
+        nums.iter().filter(|&&x| x).count() as i32
     }
 }
 
