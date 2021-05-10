@@ -5,6 +5,7 @@
 pub struct Solution {}
 
 impl Solution {
+    /// a normal way
     pub fn count_primes(n: i32) -> i32 {
         (0..n)
             .filter(|x| *x == 2 || *x % 2 != 0)
