@@ -1,12 +1,19 @@
+/*!
+ * https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/599/week-2-may-8th-may-14th/3738/
+ */
+
 pub struct Solution {}
 
 impl Solution {
     pub fn count_primes(n: i32) -> i32 {
-        (0..n).filter(|x| Self::is_prime(x)).count() as i32
+        (0..n)
+            // .filter(|x| *x == 2 || *x % 2 != 0)
+            .filter(|x| Self::is_prime(x))
+            .count() as i32
     }
 
     pub fn is_prime(x: &i32) -> bool {
-        (2..*x).any(|i| *x % i == 0)
+        *x > 1 && !(2..*x).any(|i| *x % i == 0)
     }
 }
 
