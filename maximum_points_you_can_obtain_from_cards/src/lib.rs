@@ -4,13 +4,12 @@ impl Solution {
     pub fn max_score(card_points: Vec<i32>, k: i32) -> i32 {
         let k = k as usize;
         let window_length = card_points.len() - k;
-        let mut sum = card_points[window_length..].iter().sum();
-        let mut sums = vec![sum];
-        for i in 0..k {
-            sum += card_points[i] - card_points[i + window_length];
-            sums.push(sum);
-        }
-        *sums.iter().max().unwrap()
+        let mut current: i32 = card_points[window_length..].iter().sum();
+        let max = current;
+        (0..k).fold(max, |acc, i| {
+            current += card_points[i] - card_points[i + window_length];
+            acc.max(current)
+        })
     }
 }
 
