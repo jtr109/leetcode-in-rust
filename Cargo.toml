@@ -21,4 +21,5 @@ members = [
     "delete_operation_for_two_strings",
     "construct_target_array_with_multiple_sums",
     "count_primes",
+    "maximum_points_you_can_obtain_from_cards",
 ]
