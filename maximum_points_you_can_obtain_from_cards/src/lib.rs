@@ -1,7 +1,17 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn max_score(card_points: Vec<i32>, k: i32) -> i32 {}
+    pub fn max_score(card_points: Vec<i32>, k: i32) -> i32 {
+        let k = k as usize;
+        let window_length = card_points.len() - k;
+        let mut sum = card_points[window_length..].iter().sum();
+        let mut sums = vec![sum];
+        for i in 0..k {
+            sum += card_points[i] - card_points[i + window_length];
+            sums.push(sum);
+        }
+        *sums.iter().max().unwrap()
+    }
 }
 
 #[cfg(test)]
