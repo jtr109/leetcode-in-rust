@@ -11,11 +11,20 @@ impl NumMatrix {
         Self { matrix }
     }
 
+    fn sum(&self, row: i32, col: i32) -> i32 {
+        if row == -1 || col == -1 {
+            0
+        } else {
+            self.matrix[row as usize][col as usize]
+                + self.sum(row - 1, col)
+                + self.sum(row, col - 1)
+                - self.sum(row - 1, col - 1)
+        }
+    }
+
     pub fn sum_region(&self, row1: i32, col1: i32, row2: i32, col2: i32) -> i32 {
-        self.matrix[row1 as usize..=row2 as usize]
-            .iter()
-            .map(|row| row[col1 as usize..=col2 as usize].iter().sum::<i32>())
-            .sum::<i32>()
+        self.sum(row2, col2) - self.sum(row1 - 1, col2) - self.sum(row2, col1 - 1)
+            + self.sum(row1 - 1, col1 - 1)
     }
 }
 
