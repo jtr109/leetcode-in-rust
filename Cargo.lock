@@ -65,6 +65,10 @@ name = "prefix_and_suffix_search"
 version = "0.1.0"
 
 [[package]]
+name = "range_sum_query_2d"
+version = "0.1.0"
+
+[[package]]
 name = "reverse_integer"
 version = "0.1.0"
 
