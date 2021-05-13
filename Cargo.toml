@@ -23,4 +23,5 @@ members = [
     "count_primes",
     "maximum_points_you_can_obtain_from_cards",
     "range_sum_query_2d",
+    "ambiguous_coordinates",
 ]
