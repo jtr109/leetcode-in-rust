@@ -50,6 +50,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+
     use super::*;
 
     #[test]
@@ -80,5 +81,23 @@ mod tests {
             }))),
         })));
         Solution::flatten(&mut root);
+        assert_eq!(root.clone().unwrap().borrow_mut().val, 1);
+        assert_eq!(root.clone().unwrap().borrow_mut().left, None);
+        let r1 = root.clone().unwrap().borrow_mut().right.clone();
+        assert_eq!(r1.clone().unwrap().borrow_mut().val, 2);
+        assert_eq!(r1.clone().unwrap().borrow_mut().left, None);
+        let r2 = r1.clone().unwrap().borrow_mut().right.clone();
+        assert_eq!(r2.clone().unwrap().borrow_mut().val, 3);
+        assert_eq!(r2.clone().unwrap().borrow_mut().left, None);
+        let r3 = r2.clone().unwrap().borrow_mut().right.clone();
+        assert_eq!(r3.clone().unwrap().borrow_mut().val, 4);
+        assert_eq!(r3.clone().unwrap().borrow_mut().left, None);
+        let r4 = r3.clone().unwrap().borrow_mut().right.clone();
+        assert_eq!(r4.clone().unwrap().borrow_mut().val, 5);
+        assert_eq!(r4.clone().unwrap().borrow_mut().left, None);
+        let r5 = r4.clone().unwrap().borrow_mut().right.clone();
+        assert_eq!(r5.clone().unwrap().borrow_mut().val, 6);
+        assert_eq!(r5.clone().unwrap().borrow_mut().left, None);
+        assert_eq!(r5.clone().unwrap().borrow_mut().right, None);
     }
 }
