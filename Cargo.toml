@@ -24,4 +24,5 @@ members = [
     "maximum_points_you_can_obtain_from_cards",
     "range_sum_query_2d",
     "ambiguous_coordinates",
+    "flatten_binary_tree_to_linked_list",
 ]

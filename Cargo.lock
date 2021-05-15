@@ -33,6 +33,10 @@ name = "edit_distance"
 version = "0.1.0"
 
 [[package]]
+name = "flatten_binary_tree_to_linked_list"
+version = "0.1.0"
+
+[[package]]
 name = "implement_queue_using_stacks"
 version = "0.1.0"
 
