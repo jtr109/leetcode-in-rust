@@ -25,4 +25,5 @@ members = [
     "range_sum_query_2d",
     "ambiguous_coordinates",
     "flatten_binary_tree_to_linked_list",
+    "longest_string_chain",
 ]
