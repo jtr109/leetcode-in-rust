@@ -33,6 +33,10 @@ name = "edit_distance"
 version = "0.1.0"
 
 [[package]]
+name = "find_duplicate_file_in_system"
+version = "0.1.0"
+
+[[package]]
 name = "flatten_binary_tree_to_linked_list"
 version = "0.1.0"
 
@@ -54,10 +58,6 @@ version = "0.1.0"
 
 [[package]]
 name = "longest_palindromic_substring"
-version = "0.1.0"
-
-[[package]]
-name = "longest_string_chain"
 version = "0.1.0"
 
 [[package]]
