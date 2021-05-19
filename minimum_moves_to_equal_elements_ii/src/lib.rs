@@ -31,4 +31,11 @@ mod tests {
         let expected = 16;
         assert_eq!(Solution::min_moves2(nums), expected);
     }
+
+    #[test]
+    fn boundary() {
+        let nums = vec![1];
+        let expected = 0;
+        assert_eq!(Solution::min_moves2(nums), expected);
+    }
 }
