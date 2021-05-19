@@ -23,4 +23,8 @@ members = [
     "count_primes",
     "maximum_points_you_can_obtain_from_cards",
     "range_sum_query_2d",
+    "ambiguous_coordinates",
+    "flatten_binary_tree_to_linked_list",
+    "find_duplicate_file_in_system",
+    "minimum_moves_to_equal_elements_ii",
 ]
