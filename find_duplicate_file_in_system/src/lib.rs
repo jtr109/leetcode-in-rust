@@ -1,8 +1,41 @@
+use std::collections::HashMap;
+
 pub struct Solution {}
 
 impl Solution {
+    fn parse_path(path: &str) -> Vec<(String, String)> {
+        let mut root = "";
+        let mut result = vec![];
+        for (i, s) in path.split(' ').enumerate() {
+            if i == 0 {
+                root = s;
+            } else {
+                let left = s.find("(").unwrap();
+                result.push((
+                    format!("{}/{}", root, &s[..left]),
+                    s[left + 1..s.len() - 1].to_string(),
+                ))
+            }
+        }
+        result
+    }
+
     pub fn find_duplicate(paths: Vec<String>) -> Vec<Vec<String>> {
-        vec![vec![]]
+        let mut map = HashMap::new();
+        for path in paths.iter() {
+            for (p, content) in Self::parse_path(path) {
+                match map.get_mut(&content) {
+                    None => {
+                        map.insert(content, vec![p]);
+                    }
+                    Some(v) => v.push(p),
+                }
+            }
+        }
+        map.iter()
+            .filter(|(_, v)| v.len() > 1)
+            .map(|(_, v)| v.clone())
+            .collect::<Vec<Vec<String>>>()
     }
 }
 
