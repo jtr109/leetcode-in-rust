@@ -5,6 +5,10 @@ name = "ambiguous_coordinates"
 version = "0.1.0"
 
 [[package]]
+name = "binary_tree_level_order_traveral"
+version = "0.1.0"
+
+[[package]]
 name = "binary_tree_postorder_traversal"
 version = "0.1.0"
 
