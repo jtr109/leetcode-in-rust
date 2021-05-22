@@ -37,6 +37,10 @@ name = "edit_distance"
 version = "0.1.0"
 
 [[package]]
+name = "find_and_replace_pattern"
+version = "0.1.0"
+
+[[package]]
 name = "find_duplicate_file_in_system"
 version = "0.1.0"
 
