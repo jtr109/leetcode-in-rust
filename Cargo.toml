@@ -28,4 +28,6 @@ members = [
     "find_duplicate_file_in_system",
     "minimum_moves_to_equal_elements_ii",
     "binary_tree_level_order_traveral",
+    "find_and_replace_pattern",
+    "to_lower_case",
 ]
