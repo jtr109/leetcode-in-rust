@@ -1,7 +1,29 @@
+const OPERATORS: [&str; 4] = ["+", "-", "*", "/"];
+
 pub struct Solution {}
 
 impl Solution {
-    pub fn eval_rpn(tokens: Vec<String>) -> i32 {}
+    pub fn eval_rpn(tokens: Vec<String>) -> i32 {
+        let mut nums: Vec<i32> = vec![];
+        for t in tokens.iter() {
+            if !OPERATORS.iter().any(|x| x == t) {
+                nums.push(t.parse().unwrap());
+                continue;
+            }
+            let n2 = nums.pop().unwrap();
+            let n1 = nums.pop().unwrap();
+            nums.push(if t == "+" {
+                n1 + n2
+            } else if t == "-" {
+                n1 - n2
+            } else if t == "*" {
+                n1 * n2
+            } else {
+                n1 / n2
+            })
+        }
+        nums.pop().unwrap()
+    }
 }
 
 #[cfg(test)]
