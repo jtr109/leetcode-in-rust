@@ -30,4 +30,5 @@ members = [
     "binary_tree_level_order_traveral",
     "find_and_replace_pattern",
     "to_lower_case",
+    "evaluate_reverse_polish_notation",
 ]
