@@ -31,4 +31,6 @@ members = [
     "find_and_replace_pattern",
     "to_lower_case",
     "evaluate_reverse_polish_notation",
+    "partitioning_into_minimum_number_of_deci_binary_numbers",
+    "maximum_product_of_word_lengths",
 ]

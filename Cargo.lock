@@ -77,6 +77,10 @@ name = "maximum_points_you_can_obtain_from_cards"
 version = "0.1.0"
 
 [[package]]
+name = "maximum_product_of_word_lengths"
+version = "0.1.0"
+
+[[package]]
 name = "merge_sorted_array"
 version = "0.1.0"
 
@@ -86,6 +90,10 @@ version = "0.1.0"
 
 [[package]]
 name = "non_decreasing_array"
+version = "0.1.0"
+
+[[package]]
+name = "partitioning_into_minimum_number_of_deci_binary_numbers"
 version = "0.1.0"
 
 [[package]]
