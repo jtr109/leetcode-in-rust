@@ -31,19 +31,19 @@ impl Solution {
         mask1 & mask2 != 0
     }
 
-    // fn get_length(length_cache: &Vec<usize>, index: usize, word: &String) -> usize {
-    //     match length_cache.get(index) {
-    //         Some(&l) if l != 0 {
-    //             l
-    //         },
-    //         _ => {
-    //             let length = word.chars().count();
-    //             length_cache[]
-    //         }
-    //     }
-    // }
+    fn get_length(length_cache: &mut Vec<usize>, index: usize, word: &String) -> usize {
+        match length_cache.get(index) {
+            Some(&l) if l != 0 => l,
+            _ => {
+                let length = word.chars().count();
+                length_cache[index] = length;
+                length
+            }
+        }
+    }
 
     pub fn max_product(words: Vec<String>) -> i32 {
+        let mut length_cache = vec![0; words.len()];
         let mut mask_cache = vec![0; words.len()];
         let mut max = 0;
         for (i, w1) in words.iter().enumerate() {
@@ -52,7 +52,10 @@ impl Solution {
                 if Self::share_common_letters(&mut mask_cache, i, w1, j, w2) {
                     continue;
                 }
-                max = max.max((w1.chars().count() * w2.chars().count()) as i32);
+                max = max.max(
+                    (Self::get_length(&mut length_cache, i, w1)
+                        * Self::get_length(&mut length_cache, j, w2)) as i32,
+                );
             }
         }
         max
