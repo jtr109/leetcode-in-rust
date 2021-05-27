@@ -2,14 +2,12 @@ pub struct Solution {}
 
 impl Solution {
     fn share_common_letters(w1: &String, w2: &String) -> bool {
-        let mut mask1 = 0;
-        for c1 in w1.chars() {
-            mask1 |= 1 << (c1 as u8 - 'a' as u8);
-        }
-        let mut mask2 = 0;
-        for c2 in w2.chars() {
-            mask2 |= 1 << (c2 as u8 - 'a' as u8);
-        }
+        let mask1 = w1
+            .chars()
+            .fold(0, |acc, x| acc | 1 << (x as u8 - 'a' as u8));
+        let mask2 = w2
+            .chars()
+            .fold(0, |acc, x| acc | 1 << (x as u8 - 'a' as u8));
         mask1 & mask2 != 0
     }
 
