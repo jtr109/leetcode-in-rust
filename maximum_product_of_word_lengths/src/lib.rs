@@ -2,14 +2,15 @@ pub struct Solution {}
 
 impl Solution {
     fn share_common_letters(w1: &String, w2: &String) -> bool {
+        let mut mask1 = 0;
         for c1 in w1.chars() {
-            for c2 in w2.chars() {
-                if c1 == c2 {
-                    return true;
-                }
-            }
+            mask1 |= 1 << (c1 as u8 - 'a' as u8);
         }
-        false
+        let mut mask2 = 0;
+        for c2 in w2.chars() {
+            mask2 |= 1 << (c2 as u8 - 'a' as u8);
+        }
+        mask1 & mask2 != 0
     }
 
     pub fn max_product(words: Vec<String>) -> i32 {
