@@ -1,7 +1,30 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn max_product(words: Vec<String>) -> i32 {}
+    fn share_common_letters(w1: &String, w2: &String) -> bool {
+        for c1 in w1.chars() {
+            for c2 in w2.chars() {
+                if c1 == c2 {
+                    return true;
+                }
+            }
+        }
+        false
+    }
+
+    pub fn max_product(words: Vec<String>) -> i32 {
+        let mut max = 0;
+        for (i, w1) in words.iter().enumerate() {
+            for j in i + 1..words.len() {
+                let w2 = &words[j];
+                if Self::share_common_letters(w1, w2) {
+                    continue;
+                }
+                max = max.max((w1.chars().count() * w2.chars().count()) as i32);
+            }
+        }
+        max
+    }
 }
 
 #[cfg(test)]
