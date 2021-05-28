@@ -1,61 +1,31 @@
 pub struct Solution {}
 
 impl Solution {
-    fn share_common_letters(
-        mask_cache: &mut Vec<i32>,
-        i1: usize,
-        w1: &String,
-        i2: usize,
-        w2: &String,
-    ) -> bool {
-        let mask1 = match mask_cache.get(i1) {
-            Some(&x) if x != 0 => x,
-            _ => {
-                let mask = w1
-                    .chars()
-                    .fold(0, |acc, x| acc | 1 << (x as u8 - 'a' as u8));
-                mask_cache[i1] = mask;
-                mask
-            }
-        };
-        let mask2 = match mask_cache.get(i2) {
-            Some(&x) if x != 0 => x,
-            _ => {
-                let mask = w2
-                    .chars()
-                    .fold(0, |acc, x| acc | 1 << (x as u8 - 'a' as u8));
-                mask_cache[i2] = mask;
-                mask
-            }
-        };
+    fn cal_mask(word: &String) -> i32 {
+        word.chars()
+            .fold(0, |acc, x| acc | 1 << (x as u8 - 'a' as u8))
+    }
+
+    fn share_common_letters(mask_cache: &Vec<i32>, i1: usize, i2: usize) -> bool {
+        let mask1 = mask_cache[i1];
+        let mask2 = mask_cache[i2];
         mask1 & mask2 != 0
     }
 
-    fn get_length(length_cache: &mut Vec<usize>, index: usize, word: &String) -> usize {
-        match length_cache.get(index) {
-            Some(&l) if l != 0 => l,
-            _ => {
-                let length = word.chars().count();
-                length_cache[index] = length;
-                length
-            }
-        }
-    }
-
     pub fn max_product(words: Vec<String>) -> i32 {
-        let mut length_cache = vec![0; words.len()];
-        let mut mask_cache = vec![0; words.len()];
+        let mut length_cache = Vec::with_capacity(words.len());
+        let mut mask_cache = Vec::with_capacity(words.len());
+        for word in words.iter() {
+            length_cache.push(word.chars().count() as i32);
+            mask_cache.push(Self::cal_mask(word));
+        }
         let mut max = 0;
-        for (i, w1) in words.iter().enumerate() {
+        for i in 0..words.len() {
             for j in i + 1..words.len() {
-                let w2 = &words[j];
-                if Self::share_common_letters(&mut mask_cache, i, w1, j, w2) {
+                if Self::share_common_letters(&mask_cache, i, j) {
                     continue;
                 }
-                max = max.max(
-                    (Self::get_length(&mut length_cache, i, w1)
-                        * Self::get_length(&mut length_cache, j, w2)) as i32,
-                );
+                max = max.max(length_cache[i] * length_cache[j]);
             }
         }
         max
