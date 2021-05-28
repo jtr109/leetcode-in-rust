@@ -10,8 +10,10 @@ impl Solution {
             if r == nums.len() {
                 break;
             }
-            while nums[l..r].contains(&nums[r]) {
-                // TODO: increase l until nums[l] == nums[r]
+            if nums[l..r].contains(&nums[r]) {
+                while nums[l] != nums[r] {
+                    l += 1;
+                }
                 l += 1;
             }
             let sum = nums[l..=r].iter().sum();
