@@ -1,7 +1,7 @@
 pub struct Solution {}
 
 impl Solution {
-    fn cal_mask(word: &String) -> i32 {
+    fn cal_mask(word: &str) -> i32 {
         word.chars()
             .fold(0, |acc, x| acc | 1 << (x as u8 - 'a' as u8))
     }
