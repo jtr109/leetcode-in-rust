@@ -1,22 +1,21 @@
-use std::collections::HashSet;
-
 pub struct Solution {}
 
 impl Solution {
     pub fn maximum_unique_subarray(nums: Vec<i32>) -> i32 {
-        let mut max = 0;
-        for (l, n) in nums.iter().enumerate() {
-            let mut subarray_nums = HashSet::new();
-            subarray_nums.insert(*n);
-            for r in l + 1..nums.len() {
-                let m = nums[r];
-                if subarray_nums.contains(&m) {
-                    break;
-                }
-                subarray_nums.insert(m);
+        let mut l = 0;
+        let mut r = 0;
+        let mut max = nums[l];
+        loop {
+            r += 1;
+            if r == nums.len() {
+                break;
             }
-            let sum = subarray_nums.iter().sum();
-            if sum > max {
+            while nums[l..r].contains(&nums[r]) {
+                // TODO: increase l until nums[l] == nums[r]
+                l += 1;
+            }
+            let sum = nums[l..=r].iter().sum();
+            if max < sum {
                 max = sum;
             }
         }
@@ -39,6 +38,13 @@ mod tests {
     fn example_2() {
         let nums = vec![5, 2, 1, 2, 5, 2, 1, 2, 5];
         let expected = 8;
+        assert_eq!(Solution::maximum_unique_subarray(nums), expected);
+    }
+
+    #[test]
+    fn submission_test_1() {
+        let nums = vec![1000];
+        let expected = 1000;
         assert_eq!(Solution::maximum_unique_subarray(nums), expected);
     }
 }
