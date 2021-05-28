@@ -1,17 +1,21 @@
+use std::collections::HashSet;
+
 pub struct Solution {}
 
 impl Solution {
     pub fn maximum_unique_subarray(nums: Vec<i32>) -> i32 {
         let mut max = 0;
         for (l, n) in nums.iter().enumerate() {
-            let mut sum = *n;
+            let mut subarray_nums = HashSet::new();
+            subarray_nums.insert(*n);
             for r in l + 1..nums.len() {
                 let m = nums[r];
-                if nums[l..r].contains(&m) {
+                if subarray_nums.contains(&m) {
                     break;
                 }
-                sum += m;
+                subarray_nums.insert(m);
             }
+            let sum = subarray_nums.iter().sum();
             if sum > max {
                 max = sum;
             }
