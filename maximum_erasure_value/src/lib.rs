@@ -1,7 +1,23 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn maximum_unique_subarray(nums: Vec<i32>) -> i32 {}
+    pub fn maximum_unique_subarray(nums: Vec<i32>) -> i32 {
+        let mut max = 0;
+        for (l, n) in nums.iter().enumerate() {
+            let mut sum = *n;
+            for r in l + 1..nums.len() {
+                let m = nums[r];
+                if nums[l..r].contains(&m) {
+                    break;
+                }
+                sum += m;
+            }
+            if sum > max {
+                max = sum;
+            }
+        }
+        max
+    }
 }
 
 #[cfg(test)]
