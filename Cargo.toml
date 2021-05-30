@@ -34,4 +34,5 @@ members = [
     "partitioning_into_minimum_number_of_deci_binary_numbers",
     "maximum_product_of_word_lengths",
     "maximum_erasure_value",
+    "maximum_gap",
 ]
