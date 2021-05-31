@@ -125,6 +125,10 @@ name = "running_sum_of_1d_array"
 version = "0.1.0"
 
 [[package]]
+name = "search_suggestions_system"
+version = "0.1.0"
+
+[[package]]
 name = "three_sum"
 version = "0.1.0"
 

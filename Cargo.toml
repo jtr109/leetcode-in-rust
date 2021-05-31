@@ -35,4 +35,5 @@ members = [
     "maximum_product_of_word_lengths",
     "maximum_erasure_value",
     "maximum_gap",
+    "search_suggestions_system",
 ]
