@@ -77,6 +77,10 @@ name = "maximum_erasure_value"
 version = "0.1.0"
 
 [[package]]
+name = "maximum_gap"
+version = "0.1.0"
+
+[[package]]
 name = "maximum_points_you_can_obtain_from_cards"
 version = "0.1.0"
 
