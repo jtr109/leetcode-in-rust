@@ -36,4 +36,5 @@ members = [
     "maximum_erasure_value",
     "maximum_gap",
     "search_suggestions_system",
+    "max_area_of_island",
 ]

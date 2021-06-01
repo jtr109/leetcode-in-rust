@@ -47,7 +47,7 @@ impl Trie {
 
 impl Solution {
     pub fn suggested_products(mut products: Vec<String>, search_word: String) -> Vec<Vec<String>> {
-        // TODO: 深度优先搜索结果
+        // TODO: 深度优先搜索结果，但是怎么让它停下来？
         products.sort();
         let mut trie = Trie::new();
         for (index, p) in products.iter().enumerate() {
