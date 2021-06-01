@@ -73,6 +73,10 @@ name = "longest_palindromic_substring"
 version = "0.1.0"
 
 [[package]]
+name = "max_area_of_island"
+version = "0.1.0"
+
+[[package]]
 name = "maximum_erasure_value"
 version = "0.1.0"
 
@@ -122,6 +126,10 @@ version = "0.1.0"
 
 [[package]]
 name = "running_sum_of_1d_array"
+version = "0.1.0"
+
+[[package]]
+name = "search_suggestions_system"
 version = "0.1.0"
 
 [[package]]
