@@ -2,9 +2,10 @@ pub struct Solution {}
 
 impl Solution {
     fn interleave(s1: &str, s2: &str, s3: &str) -> bool {
-        if s3.len() == 0 {
-            true
-        } else if s1.len() == 0 {
+        if s3.chars().count() == 0 {
+            return s1.chars().count() == 0 && s2.chars().count() == 0;
+        }
+        if s1.len() == 0 {
             s2 == s3
         } else if s2.len() == 0 {
             s1 == s3
