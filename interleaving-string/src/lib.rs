@@ -1,30 +1,41 @@
 pub struct Solution {}
 
-impl Solution {
-    fn interleave(
-        s1: &Vec<char>,
-        s2: &Vec<char>,
-        s3: &Vec<char>,
-        i1: usize,
-        i2: usize,
-        i3: usize,
-    ) -> bool {
-        if i3 == s3.len() {
-            return true;
+struct Resolver {
+    v1: Vec<char>,
+    v2: Vec<char>,
+    v3: Vec<char>,
+    validation: Vec<Vec<Option<bool>>>,
+}
+
+impl Resolver {
+    fn new(s1: String, s2: String, s3: String) -> Self {
+        Self {
+            v1: s1.chars().collect(),
+            v2: s2.chars().collect(),
+            v3: s3.chars().collect(),
+            validation: vec![vec![None; s2.chars().count()]; s1.chars().count()],
         }
-        i1 < s1.len() && s1[i1] == s3[i3] && Self::interleave(s1, s2, s3, i1 + 1, i2, i3 + 1)
-            || i2 < s2.len() && s2[i2] == s3[i3] && Self::interleave(s1, s2, s3, i1, i2 + 1, i3 + 1)
     }
 
+    fn dfs(&self, i1: usize, i2: usize, i3: usize) -> bool {
+        if i3 == self.v3.len() {
+            return true;
+        }
+        i1 < self.v1.len() && self.v1[i1] == self.v3[i3] && self.dfs(i1 + 1, i2, i3 + 1)
+            || i2 < self.v2.len() && self.v2[i2] == self.v3[i3] && self.dfs(i1, i2 + 1, i3 + 1)
+    }
+
+    fn is_interleave(&self) -> bool {
+        if self.v1.len() + self.v2.len() != self.v3.len() {
+            return false;
+        }
+        self.dfs(0, 0, 0)
+    }
+}
+
+impl Solution {
     pub fn is_interleave(s1: String, s2: String, s3: String) -> bool {
-        Self::interleave(
-            &s1.chars().collect::<Vec<char>>(),
-            &s2.chars().collect::<Vec<char>>(),
-            &s3.chars().collect::<Vec<char>>(),
-            0,
-            0,
-            0,
-        )
+        Resolver::new(s1, s2, s3).is_interleave()
     }
 }
 
