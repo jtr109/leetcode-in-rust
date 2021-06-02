@@ -13,19 +13,25 @@ impl Resolver {
             v1: s1.chars().collect(),
             v2: s2.chars().collect(),
             v3: s3.chars().collect(),
-            validation: vec![vec![None; s2.chars().count()]; s1.chars().count()],
+            validation: vec![vec![None; s2.chars().count() + 1]; s1.chars().count() + 1], // prevent out of index
         }
     }
 
-    fn dfs(&self, i1: usize, i2: usize, i3: usize) -> bool {
+    fn dfs(&mut self, i1: usize, i2: usize, i3: usize) -> bool {
         if i3 == self.v3.len() {
             return true;
         }
-        i1 < self.v1.len() && self.v1[i1] == self.v3[i3] && self.dfs(i1 + 1, i2, i3 + 1)
-            || i2 < self.v2.len() && self.v2[i2] == self.v3[i3] && self.dfs(i1, i2 + 1, i3 + 1)
+        if let Some(valid) = self.validation[i1][i2] {
+            return valid;
+        }
+        let valid =
+            i1 < self.v1.len() && self.v1[i1] == self.v3[i3] && self.dfs(i1 + 1, i2, i3 + 1)
+                || i2 < self.v2.len() && self.v2[i2] == self.v3[i3] && self.dfs(i1, i2 + 1, i3 + 1);
+        self.validation[i1][i2] = Some(valid);
+        valid
     }
 
-    fn is_interleave(&self) -> bool {
+    fn is_interleave(&mut self) -> bool {
         if self.v1.len() + self.v2.len() != self.v3.len() {
             return false;
         }
@@ -82,7 +88,7 @@ mod tests {
         let s1 = "bbbbbabbbbabaababaaaabbababbaaabbabbaaabaaaaababbbababbbbbabbbbababbabaabababbbaabababababbbaaababaa";
         let s2 = "babaaaabbababbbabbbbaabaabbaabbbbaabaaabaababaaaabaaabbaaabaaaabaabaabbbbbbbbbbbabaaabbababbabbabaab";
         let s3 = "babbbabbbaaabbababbbbababaabbabaabaaabbbbabbbaaabbbaaaaabbbbaabbaaabababbaaaaaabababbababaababbababbbababbbbaaaabaabbabbaaaaabbabbaaaabbbaabaaabaababaababbaaabbbbbabbbbaabbabaabbbbabaaabbababbabbabbab";
-        let expected = true;
+        let expected = false;
         as_expected(s1, s2, s3, expected);
     }
 }
