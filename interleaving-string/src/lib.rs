@@ -1,31 +1,29 @@
 pub struct Solution {}
 
 impl Solution {
-    fn interleave(s1: &[char], s2: &[char], s3: &[char]) -> bool {
-        if s3.len() != s1.len() + s2.len() {
-            return false;
+    fn interleave(
+        s1: &Vec<char>,
+        s2: &Vec<char>,
+        s3: &Vec<char>,
+        i1: usize,
+        i2: usize,
+        i3: usize,
+    ) -> bool {
+        if i3 == s3.len() {
+            return true;
         }
-        if s3.len() == 0 {
-            return s1.len() == 0 && s2.len() == 0;
-        }
-        if s1.len() == 0 {
-            s2 == s3
-        } else if s2.len() == 0 {
-            s1 == s3
-        } else if s1[0] == s3[0] && Self::interleave(&s1[1..].to_vec(), s2, &s3[1..].to_vec()) {
-            true
-        } else if s2[0] == s3[0] && Self::interleave(s1, &s2[1..], &s3[1..]) {
-            true
-        } else {
-            false
-        }
+        i1 < s1.len() && s1[i1] == s3[i3] && Self::interleave(s1, s2, s3, i1 + 1, i2, i3 + 1)
+            || i2 < s2.len() && s2[i2] == s3[i3] && Self::interleave(s1, s2, s3, i1, i2 + 1, i3 + 1)
     }
 
     pub fn is_interleave(s1: String, s2: String, s3: String) -> bool {
         Self::interleave(
-            &s1.chars().collect::<Vec<char>>()[..],
-            &s2.chars().collect::<Vec<char>>()[..],
-            &s3.chars().collect::<Vec<char>>()[..],
+            &s1.chars().collect::<Vec<char>>(),
+            &s2.chars().collect::<Vec<char>>(),
+            &s3.chars().collect::<Vec<char>>(),
+            0,
+            0,
+            0,
         )
     }
 }
