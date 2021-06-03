@@ -1,24 +1,27 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn max_area(h: i32, w: i32, horizontal_cuts: Vec<i32>, vertical_cuts: Vec<i32>) -> i32 {
-        let mut horizontal_lines = vec![vec![0, h], horizontal_cuts].concat();
-        let mut vertical_lines = vec![vec![0, w], vertical_cuts].concat();
-        horizontal_lines.sort();
-        vertical_lines.sort();
-        (horizontal_lines[..horizontal_lines.len() - 1]
-            .iter()
-            .zip(horizontal_lines[1..].iter())
-            .map(|(u, d)| d - u)
+    pub fn max_area(
+        h: i32,
+        w: i32,
+        mut horizontal_cuts: Vec<i32>,
+        mut vertical_cuts: Vec<i32>,
+    ) -> i32 {
+        horizontal_cuts.sort();
+        vertical_cuts.sort();
+        let horizontal_lines = vec![vec![0], horizontal_cuts, vec![h]].concat();
+        let vertical_lines = vec![vec![0], vertical_cuts, vec![w]].concat();
+        (horizontal_lines
+            .windows(2)
+            .map(|w| w[1] - w[0])
             .max()
-            .unwrap() as u64
-            * vertical_lines[..vertical_lines.len() - 1]
-                .iter()
-                .zip(vertical_lines[1..].iter())
-                .map(|(l, r)| r - l)
+            .unwrap() as i64
+            * vertical_lines
+                .windows(2)
+                .map(|w| w[1] - w[0])
                 .max()
-                .unwrap() as u64
-            % ((10 as u64).pow(9) + 7)) as i32
+                .unwrap() as i64
+            % (10_i64.pow(9) + 7)) as i32
     }
 }
 
