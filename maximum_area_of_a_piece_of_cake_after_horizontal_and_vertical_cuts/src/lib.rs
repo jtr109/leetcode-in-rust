@@ -6,19 +6,19 @@ impl Solution {
         let mut vertical_lines = vec![vec![0, w], vertical_cuts].concat();
         horizontal_lines.sort();
         vertical_lines.sort();
-        horizontal_lines[..horizontal_lines.len() - 1]
+        (horizontal_lines[..horizontal_lines.len() - 1]
             .iter()
             .zip(horizontal_lines[1..].iter())
             .map(|(u, d)| d - u)
             .max()
-            .unwrap()
+            .unwrap() as u64
             * vertical_lines[..vertical_lines.len() - 1]
                 .iter()
                 .zip(vertical_lines[1..].iter())
                 .map(|(l, r)| r - l)
                 .max()
-                .unwrap()
-            % ((10 as i32).pow(9) + 7)
+                .unwrap() as u64
+            % ((10 as u64).pow(9) + 7)) as i32
     }
 }
 
