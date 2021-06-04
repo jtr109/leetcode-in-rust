@@ -39,4 +39,5 @@ members = [
     "max_area_of_island",
     "interleaving-string",
     "maximum_area_of_a_piece_of_cake_after_horizontal_and_vertical_cuts",
+    "open_the_lock",
 ]
