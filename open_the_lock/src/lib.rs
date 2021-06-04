@@ -28,6 +28,9 @@ impl Solution {
 
     pub fn open_lock(deadends: Vec<String>, target: String) -> i32 {
         let mut marked = vec![false; 10000];
+        for d in deadends {
+            marked[d.parse::<usize>().unwrap()] = true;
+        }
         let mut queue = vec![];
         let mut depth = 0;
         queue.push("0000".to_string());
