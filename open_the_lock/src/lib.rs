@@ -1,8 +1,29 @@
 pub struct Solution {}
 
 impl Solution {
-    fn digit_neighbors(n: u8) -> (u8, u8) {
-        ((n + 9) % 10, (n + 11) % 10)
+    fn digit_neighbors(c: char) -> Vec<char> {
+        let n = c.to_digit(10).unwrap();
+        vec![
+            char::from_digit((n + 9) % 10, 10).unwrap(),
+            char::from_digit((n + 1) % 10, 10).unwrap(),
+        ]
+    }
+
+    fn neighbors(wheels: &str) -> Vec<String> {
+        wheels
+            .char_indices()
+            .map(|(i, c)| {
+                Solution::digit_neighbors(c)
+                    .iter()
+                    .map(|x| {
+                        let mut w = wheels.to_string();
+                        w.replace_range(i..i + 1, &x.to_string());
+                        w
+                    })
+                    .collect()
+            })
+            .collect::<Vec<Vec<String>>>()
+            .concat()
     }
 
     pub fn open_lock(deadends: Vec<String>, target: String) -> i32 {
@@ -16,11 +37,25 @@ mod tests {
 
     #[test]
     fn test_digit_neighbors() {
-        assert_eq!(Solution::digit_neighbors(0), (9, 1));
-        assert_eq!(Solution::digit_neighbors(9), (8, 0));
+        assert_eq!(Solution::digit_neighbors('0'), vec!['9', '1']);
+        assert_eq!(Solution::digit_neighbors('9'), vec!['8', '0']);
         for n in 1..9 {
-            assert_eq!(Solution::digit_neighbors(n), (n - 1, n + 1));
+            assert_eq!(
+                Solution::digit_neighbors(char::from_digit(n, 10).unwrap()),
+                vec![
+                    char::from_digit(n - 1, 10).unwrap(),
+                    char::from_digit(n + 1, 10).unwrap()
+                ]
+            );
         }
+    }
+
+    #[test]
+    fn test_neighbors() {
+        assert_eq!(
+            Solution::neighbors("0201"),
+            vec!["9201", "1201", "0101", "0301", "0291", "0211", "0200", "0202"],
+        );
     }
 
     #[test]
