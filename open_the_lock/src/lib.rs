@@ -1,12 +1,27 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn open_lock(deadends: Vec<String>, target: String) -> i32 {}
+    fn digit_neighbors(n: u8) -> (u8, u8) {
+        ((n + 9) % 10, (n + 11) % 10)
+    }
+
+    pub fn open_lock(deadends: Vec<String>, target: String) -> i32 {
+        1
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_digit_neighbors() {
+        assert_eq!(Solution::digit_neighbors(0), (9, 1));
+        assert_eq!(Solution::digit_neighbors(9), (8, 0));
+        for n in 1..9 {
+            assert_eq!(Solution::digit_neighbors(n), (n - 1, n + 1));
+        }
+    }
 
     #[test]
     fn example_1() {
