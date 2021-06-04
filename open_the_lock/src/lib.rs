@@ -27,7 +27,30 @@ impl Solution {
     }
 
     pub fn open_lock(deadends: Vec<String>, target: String) -> i32 {
-        1
+        let mut marked = vec![false; 10000];
+        let mut queue = vec![];
+        let mut depth = 0;
+        queue.push("0000".to_string());
+        loop {
+            let mut new_queue = vec![];
+            for current in queue {
+                if current == target {
+                    return depth;
+                }
+                for neighbor in Self::neighbors(&current) {
+                    let index: usize = neighbor.parse().unwrap();
+                    if !marked[index] {
+                        marked[index] = true;
+                        new_queue.push(neighbor);
+                    }
+                }
+            }
+            if new_queue.is_empty() {
+                return -1;
+            }
+            queue = new_queue;
+            depth += 1;
+        }
     }
 }
 
