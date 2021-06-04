@@ -4,8 +4,8 @@ impl Solution {
     fn digit_neighbors(c: char) -> Vec<char> {
         let n = c.to_digit(10).unwrap();
         vec![
-            char::from_digit((n + 9) % 10, 10).unwrap(),
-            char::from_digit((n + 1) % 10, 10).unwrap(),
+            std::char::from_digit((n + 9) % 10, 10).unwrap(),
+            std::char::from_digit((n + 1) % 10, 10).unwrap(),
         ]
     }
 
@@ -27,6 +27,9 @@ impl Solution {
     }
 
     pub fn open_lock(deadends: Vec<String>, target: String) -> i32 {
+        if deadends.contains(&"0000".to_string()) {
+            return -1;
+        }
         let mut marked = vec![false; 10000];
         for d in deadends {
             marked[d.parse::<usize>().unwrap()] = true;
@@ -67,10 +70,10 @@ mod tests {
         assert_eq!(Solution::digit_neighbors('9'), vec!['8', '0']);
         for n in 1..9 {
             assert_eq!(
-                Solution::digit_neighbors(char::from_digit(n, 10).unwrap()),
+                Solution::digit_neighbors(std::char::from_digit(n, 10).unwrap()),
                 vec![
-                    char::from_digit(n - 1, 10).unwrap(),
-                    char::from_digit(n + 1, 10).unwrap()
+                    std::char::from_digit(n - 1, 10).unwrap(),
+                    std::char::from_digit(n + 1, 10).unwrap()
                 ]
             );
         }
