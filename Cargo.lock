@@ -93,6 +93,10 @@ name = "maximum_gap"
 version = "0.1.0"
 
 [[package]]
+name = "maximum_performance_of_a_team"
+version = "0.1.0"
+
+[[package]]
 name = "maximum_points_you_can_obtain_from_cards"
 version = "0.1.0"
 
