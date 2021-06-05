@@ -7,17 +7,19 @@ impl Solution {
     pub fn max_performance(n: i32, speed: Vec<i32>, efficiency: Vec<i32>, k: i32) -> i32 {
         let mut groups = speed
             .into_iter()
-            .zip(efficiency.into_iter())
-            .collect::<Vec<(i32, i32)>>();
+            .map(|x| x as i64)
+            .zip(efficiency.into_iter().map(|x| x as i64))
+            .collect::<Vec<(i64, i64)>>();
         groups.sort_by(|a, b| b.1.cmp(&a.1));
-        let (speeds, efficiencies): (Vec<i32>, Vec<i32>) = groups.iter().cloned().unzip();
+        let (speeds, efficiencies): (Vec<i64>, Vec<i64>) = groups.iter().cloned().unzip();
         let mut speed_queue = BinaryHeap::new(); // lowest priority queue
         let mut total_speed = 0;
+        let mut result = 0;
         for i in 0..k as usize {
             speed_queue.push(Reverse(speeds[i]));
             total_speed += speeds[i];
+            result = result.max(total_speed * efficiencies[i]);
         }
-        let mut result = total_speed * efficiencies[k as usize - 1];
         // try another new engineer with lower efficiency
         for i in k as usize..n as usize {
             let lowest_speed = speed_queue.peek().unwrap().0;
@@ -25,15 +27,12 @@ impl Solution {
             if lowest_speed > new_speed {
                 continue;
             }
-            let new_result = (total_speed + new_speed - lowest_speed) * efficiencies[i];
-            if new_result < result {
-                continue;
-            }
+            total_speed += new_speed - lowest_speed;
+            result = result.max(total_speed * efficiencies[i]);
             speed_queue.pop();
             speed_queue.push(Reverse(new_speed));
-            result = new_result;
         }
-        result
+        (result % 1000000007) as i32
     }
 }
 
