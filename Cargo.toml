@@ -41,4 +41,5 @@ members = [
     "maximum_area_of_a_piece_of_cake_after_horizontal_and_vertical_cuts",
     "open_the_lock",
     "maximum_performance_of_a_team",
+    "longest_consecutive_sequence",
 ]
