@@ -113,6 +113,10 @@ name = "merge_sorted_array"
 version = "0.1.0"
 
 [[package]]
+name = "min_cost_climbing_stairs"
+version = "0.1.0"
+
+[[package]]
 name = "minimum_moves_to_equal_elements_ii"
 version = "0.1.0"
 
