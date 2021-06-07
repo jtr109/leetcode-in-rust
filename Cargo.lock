@@ -57,6 +57,10 @@ name = "implement_queue_using_stacks"
 version = "0.1.0"
 
 [[package]]
+name = "interleaving-string"
+version = "0.1.0"
+
+[[package]]
 name = "intersection_of_two_arrays"
 version = "0.1.0"
 
@@ -69,6 +73,10 @@ name = "kth_largest"
 version = "0.1.0"
 
 [[package]]
+name = "longest_consecutive_sequence"
+version = "0.1.0"
+
+[[package]]
 name = "longest_palindromic_substring"
 version = "0.1.0"
 
@@ -77,11 +85,19 @@ name = "max_area_of_island"
 version = "0.1.0"
 
 [[package]]
+name = "maximum_area_of_a_piece_of_cake_after_horizontal_and_vertical_cuts"
+version = "0.1.0"
+
+[[package]]
 name = "maximum_erasure_value"
 version = "0.1.0"
 
 [[package]]
 name = "maximum_gap"
+version = "0.1.0"
+
+[[package]]
+name = "maximum_performance_of_a_team"
 version = "0.1.0"
 
 [[package]]
@@ -97,11 +113,19 @@ name = "merge_sorted_array"
 version = "0.1.0"
 
 [[package]]
+name = "min_cost_climbing_stairs"
+version = "0.1.0"
+
+[[package]]
 name = "minimum_moves_to_equal_elements_ii"
 version = "0.1.0"
 
 [[package]]
 name = "non_decreasing_array"
+version = "0.1.0"
+
+[[package]]
+name = "open_the_lock"
 version = "0.1.0"
 
 [[package]]
