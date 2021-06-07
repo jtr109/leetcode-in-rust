@@ -1,7 +1,17 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {}
+    fn min_cost_to_step(cost: &Vec<i32>, i: usize) -> i32 {
+        if i < 2 {
+            return 0;
+        }
+        (Self::min_cost_to_step(cost, i - 1) + cost[i - 1])
+            .min(Self::min_cost_to_step(cost, i - 2) + cost[i - 2])
+    }
+
+    pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {
+        Self::min_cost_to_step(&cost, cost.len())
+    }
 }
 
 #[cfg(test)]
