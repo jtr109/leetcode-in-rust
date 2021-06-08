@@ -1,4 +1,5 @@
 use std::cell::RefCell;
+use std::ops::Index;
 use std::rc::Rc;
 
 // Definition for a binary tree node.
@@ -23,7 +24,23 @@ impl TreeNode {
 pub struct Solution {}
 
 impl Solution {
-    pub fn build_tree(preorder: Vec<i32>, inorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {}
+    pub fn build_tree(preorder: Vec<i32>, inorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+        match preorder.iter().nth(0) {
+            None => None,
+            Some(val) => {
+                let index = inorder.binary_search(val).unwrap();
+                let left_inorder = inorder[..index].to_vec();
+                let left_preorder = preorder[1..1 + index].to_vec();
+                let right_inorder = inorder[index + 1..].to_vec();
+                let right_preorder = preorder[1 + index..].to_vec();
+                Some(Rc::new(RefCell::new(TreeNode {
+                    val: *val,
+                    left: Self::build_tree(left_preorder, left_inorder),
+                    right: Self::build_tree(right_preorder, right_inorder),
+                })))
+            }
+        }
+    }
 }
 
 #[cfg(test)]
