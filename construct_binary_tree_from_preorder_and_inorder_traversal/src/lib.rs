@@ -28,7 +28,7 @@ impl Solution {
         match preorder.iter().nth(0) {
             None => None,
             Some(val) => {
-                let index = inorder.binary_search(val).unwrap();
+                let index = inorder.iter().position(|v| val == v).unwrap();
                 let left_inorder = inorder[..index].to_vec();
                 let left_preorder = preorder[1..1 + index].to_vec();
                 let right_inorder = inorder[index + 1..].to_vec();
