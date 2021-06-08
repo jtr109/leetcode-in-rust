@@ -43,4 +43,5 @@ members = [
     "maximum_performance_of_a_team",
     "longest_consecutive_sequence",
     "min_cost_climbing_stairs",
+    "construct_binary_tree_from_preorder_and_inorder_traversal",
 ]
