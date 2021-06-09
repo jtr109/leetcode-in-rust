@@ -1,7 +1,20 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn max_result(nums: Vec<i32>, k: i32) -> i32 {}
+    fn max_res(nums: &Vec<i32>, i: usize, k: usize) -> i32 {
+        if i >= nums.len() {
+            return 0;
+        }
+        nums[i]
+            + (1..=k)
+                .map(|x| Self::max_res(nums, i + x, k))
+                .max()
+                .unwrap()
+    }
+
+    pub fn max_result(nums: Vec<i32>, k: i32) -> i32 {
+        Self::max_res(&nums, 0, k as usize)
+    }
 }
 
 #[cfg(test)]
