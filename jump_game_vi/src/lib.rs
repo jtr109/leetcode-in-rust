@@ -2,6 +2,9 @@ pub struct Solution {}
 
 impl Solution {
     pub fn max_result(nums: Vec<i32>, k: i32) -> i32 {
+        //! 再优化，就需要用索引优先队列缓存索引 i 能跳到的最大值，
+        //! 即索引 (i + 1)..(i + 1 + k as usize).min(nums.len()) 中的最大值。
+        //! 这样可以不用每次都计算这个序列中的最大值
         let mut max_cache = vec![0; nums.len()];
         for (i, n) in nums.iter().enumerate().rev() {
             let res_vec = max_cache[(i + 1)..(i + 1 + k as usize).min(nums.len())].to_vec();
