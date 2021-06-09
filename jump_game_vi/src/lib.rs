@@ -2,14 +2,16 @@ pub struct Solution {}
 
 impl Solution {
     fn max_res(nums: &Vec<i32>, i: usize, k: usize) -> i32 {
-        if i >= nums.len() {
-            return 0;
-        }
-        nums[i]
-            + (1..=k)
-                .map(|x| Self::max_res(nums, i + x, k))
-                .max()
-                .unwrap()
+        let res = if i >= nums.len() {
+            0
+        } else {
+            nums[i]
+                + (1..=k)
+                    .map(|x| Self::max_res(nums, i + x, k))
+                    .max()
+                    .unwrap()
+        };
+        res
     }
 
     pub fn max_result(nums: Vec<i32>, k: i32) -> i32 {
