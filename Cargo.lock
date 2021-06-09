@@ -73,6 +73,10 @@ name = "jump_game_ii"
 version = "0.1.0"
 
 [[package]]
+name = "jump_game_vi"
+version = "0.1.0"
+
+[[package]]
 name = "kth_largest"
 version = "0.1.0"
 
