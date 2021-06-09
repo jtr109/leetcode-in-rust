@@ -1,21 +1,25 @@
 pub struct Solution {}
 
 impl Solution {
-    fn max_res(nums: &Vec<i32>, i: usize, k: usize) -> i32 {
-        let res = if i >= nums.len() {
-            0
-        } else {
-            nums[i]
-                + (1..=k)
-                    .map(|x| Self::max_res(nums, i + x, k))
-                    .max()
-                    .unwrap()
-        };
+    fn max_res(nums: &Vec<i32>, i: usize, k: usize, cache: &mut Vec<Option<i32>>) -> i32 {
+        if i >= nums.len() {
+            return 0;
+        }
+        if let Some(res) = cache[i] {
+            return res;
+        }
+        let res = nums[i]
+            + (1..=k)
+                .map(|x| Self::max_res(nums, i + x, k, cache))
+                .max()
+                .unwrap();
+        cache[i] = Some(res);
         res
     }
 
     pub fn max_result(nums: Vec<i32>, k: i32) -> i32 {
-        Self::max_res(&nums, 0, k as usize)
+        let mut cache = vec![None; nums.len() + 2];
+        Self::max_res(&nums, 0, k as usize, &mut cache)
     }
 }
 
