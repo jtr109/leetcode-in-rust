@@ -1,22 +1,14 @@
 pub struct Solution {}
 
 impl Solution {
-    fn max_res(nums: &Vec<i32>, i: usize, k: usize, cache: &mut Vec<Option<i32>>) -> i32 {
-        if let Some(res) = cache[i] {
-            return res;
-        }
-        let res = nums[i]
-            + (1..=k.min(nums.len() - i - 1))
-                .map(|x| Self::max_res(nums, x + i, k, cache))
-                .max()
-                .unwrap_or(0);
-        cache[i] = Some(res);
-        res
-    }
-
     pub fn max_result(nums: Vec<i32>, k: i32) -> i32 {
-        let mut cache = vec![None; nums.len() + 2];
-        Self::max_res(&nums, 0, k as usize, &mut cache)
+        let mut max_cache = vec![0; nums.len()];
+        for (i, n) in nums.iter().enumerate().rev() {
+            let res_vec = max_cache[(i + 1)..(i + 1 + k as usize).min(nums.len())].to_vec();
+            let res = res_vec.iter().max().unwrap_or(&0) + *n;
+            max_cache[i] = res;
+        }
+        max_cache[0]
     }
 }
 
