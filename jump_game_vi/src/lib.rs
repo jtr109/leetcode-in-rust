@@ -2,9 +2,17 @@ pub struct Solution {}
 
 impl Solution {
     pub fn max_result(nums: Vec<i32>, k: i32) -> i32 {
-        //! 再优化，就需要用索引优先队列缓存索引 i 能跳到的最大值，
-        //! 即索引 (i + 1)..(i + 1 + k as usize).min(nums.len()) 中的最大值。
-        //! 这样可以不用每次都计算这个序列中的最大值
+        /*!
+        再优化，需要用索引优先队列缓存索引 i 能跳到的最大值，
+        即索引 (i + 1)..(i + 1 + k as usize).min(nums.len()) 中的最大值。
+        这样可以不用每次都计算这个序列中的最大值。
+
+        另外一个思路：使用优先队列维护一个队列 queue，其中的元素为 nums 的索引。
+
+        对索引 i 来说，计划将索引 i 加入 queue，比 nums[i] 小的索引已经没有用了，
+        将其从队列尾部删除，并将 i 加入 queue 尾部，这样可以保证 queue 中索引对应的元素是从大到小排列的。
+        同时需要再判断，如果 queue 中的第一个元素（nums 索引，对应最大值）超过了范围，则删除最大值。
+         */
         let mut max_cache = vec![0; nums.len()];
         for (i, n) in nums.iter().enumerate().rev() {
             let res_vec = max_cache[(i + 1)..(i + 1 + k as usize).min(nums.len())].to_vec();
