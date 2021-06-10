@@ -1,3 +1,5 @@
+use std::collections::VecDeque;
+
 pub struct Solution {}
 
 impl Solution {
@@ -14,10 +16,21 @@ impl Solution {
         同时需要再判断，如果 queue 中的第一个元素（nums 索引，对应最大值）超过了范围，则删除最大值。
          */
         let mut max_cache = vec![0; nums.len()];
+        let mut queue = VecDeque::new();
         for (i, n) in nums.iter().enumerate().rev() {
-            let res_vec = max_cache[(i + 1)..(i + 1 + k as usize).min(nums.len())].to_vec();
-            let res = res_vec.iter().max().unwrap_or(&0) + *n;
+            let res = *n
+                + queue
+                    .front()
+                    .and_then(|x| max_cache.iter().nth(*x))
+                    .unwrap_or(&0);
             max_cache[i] = res;
+            while !queue.is_empty() && max_cache[*queue.back().unwrap()] < res {
+                queue.pop_back();
+            }
+            queue.push_back(i);
+            if *queue.front().unwrap() > i + k as usize - 1 {
+                queue.pop_front();
+            }
         }
         max_cache[0]
     }
