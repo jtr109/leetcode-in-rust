@@ -169,6 +169,10 @@ name = "search_suggestions_system"
 version = "0.1.0"
 
 [[package]]
+name = "stone_game_vii"
+version = "0.1.0"
+
+[[package]]
 name = "three_sum"
 version = "0.1.0"
 
