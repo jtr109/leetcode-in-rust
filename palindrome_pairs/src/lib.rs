@@ -1,7 +1,23 @@
 pub struct Solution {}
 
 impl Solution {
-    pub fn palindrome_pairs(words: Vec<String>) -> Vec<Vec<i32>> {}
+    fn is_palindrome(word: &str) -> bool {
+        let chars = word.chars().collect::<Vec<char>>();
+        for i in 0..chars.len() {
+            let j = chars.len() - 1 - i;
+            if i >= j {
+                break;
+            }
+            if chars[i] != chars[j] {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    pub fn palindrome_pairs(words: Vec<String>) -> Vec<Vec<i32>> {
+        vec![]
+    }
 }
 
 #[cfg(test)]
@@ -9,14 +25,23 @@ mod tests {
     use super::*;
 
     fn as_expected(words: Vec<&str>, expected: Vec<[i32; 2]>) {
-        let result = Solution::palindrome_pairs(words.iter().map(|x| x.to_string()).collect());
+        let mut result = Solution::palindrome_pairs(words.iter().map(|x| x.to_string()).collect());
         result.sort();
-        let expected_vector = expected
+        let mut expected_vector = expected
             .iter()
             .map(|x| x.to_vec())
             .collect::<Vec<Vec<i32>>>();
         expected_vector.sort();
         assert_eq!(result, expected_vector);
+    }
+
+    #[test]
+    fn test_is_palindrome() {
+        assert!(Solution::is_palindrome("abcddcba"));
+        assert!(Solution::is_palindrome("dcbaabcd"));
+        assert!(Solution::is_palindrome("slls"));
+        assert!(Solution::is_palindrome("llssssll"));
+        assert!(!Solution::is_palindrome("ssslllls"));
     }
 
     #[test]
