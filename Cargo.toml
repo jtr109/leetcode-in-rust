@@ -48,4 +48,5 @@ members = [
     "my_calendar_i",
     "stone_game_vii",
     "minumum_number_of_refueling_stops",
+    "palindrome_pairs",
 ]

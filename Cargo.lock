@@ -145,6 +145,10 @@ name = "open_the_lock"
 version = "0.1.0"
 
 [[package]]
+name = "palindrome_pairs"
+version = "0.1.0"
+
+[[package]]
 name = "partitioning_into_minimum_number_of_deci_binary_numbers"
 version = "0.1.0"
 
