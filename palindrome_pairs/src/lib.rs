@@ -16,7 +16,19 @@ impl Solution {
     }
 
     pub fn palindrome_pairs(words: Vec<String>) -> Vec<Vec<i32>> {
-        vec![]
+        let mut result = vec![];
+        for (i, w1) in words.iter().enumerate() {
+            for (j, w2) in words.iter().enumerate() {
+                if i == j {
+                    continue;
+                }
+                let word = String::new() + w1 + w2;
+                if Self::is_palindrome(&word) {
+                    result.push(vec![i as i32, j as i32]);
+                }
+            }
+        }
+        result
     }
 }
 
