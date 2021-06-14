@@ -16,6 +16,7 @@ impl Solution {
     }
 
     pub fn palindrome_pairs(words: Vec<String>) -> Vec<Vec<i32>> {
+        // TODO: use Trie to store words and reversed ones
         let mut result = vec![];
         for (i, w1) in words.iter().enumerate() {
             for (j, w2) in words.iter().enumerate() {
