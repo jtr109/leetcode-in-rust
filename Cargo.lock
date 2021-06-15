@@ -89,6 +89,10 @@ name = "longest_palindromic_substring"
 version = "0.1.0"
 
 [[package]]
+name = "matchsticks_to_square"
+version = "0.1.0"
+
+[[package]]
 name = "max_area_of_island"
 version = "0.1.0"
 

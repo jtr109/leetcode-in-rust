@@ -49,4 +49,5 @@ members = [
     "stone_game_vii",
     "minumum_number_of_refueling_stops",
     "palindrome_pairs",
+    "matchsticks_to_square",
 ]
