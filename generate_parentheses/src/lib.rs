@@ -1,21 +1,31 @@
+/*!
+ * Follow solution: https://leetcode.com/problems/generate-parentheses/discuss/10100/Easy-to-understand-Java-backtracking-solution
+ */
+
 pub struct Solution {}
 
 impl Solution {
     pub fn generate_parenthesis(n: i32) -> Vec<String> {
-        if n == 1 {
-            return vec!["()".to_string()];
+        let mut list = Vec::new();
+        Self::backtrack(&mut list, "".to_string(), 0, 0, n as usize);
+        list
+    }
+
+    fn backtrack(list: &mut Vec<String>, s: String, open: usize, close: usize, max: usize) {
+        // 如果前缀为 s 的值，获取所有可能性，加入 list
+        if (s.chars().count()) == max * 2 {
+            list.push(s);
+            return;
         }
-        let mut result = Vec::new();
-        for r in Self::generate_parenthesis(n - 1) {
-            result.push(format!("({})", r));
-            let s1 = format!("(){}", r);
-            let s2 = format!("{}()", r);
-            if s2 != s1 {
-                result.push(s2);
-            }
-            result.push(s1);
+
+        if open < max {
+            // 如果前缀中的 `(` 数量达到最大值，不再往前缀中加入 `(`
+            Self::backtrack(list, s.clone() + "(", open + 1, close, max);
         }
-        result
+        if close < open {
+            // 如果前缀中的 `)` 数量和 `(` 数量一样多了，不再往前缀中加入 `)`
+            Self::backtrack(list, s.clone() + ")", open, close + 1, max);
+        }
     }
 }
 
