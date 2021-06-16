@@ -50,4 +50,5 @@ members = [
     "minumum_number_of_refueling_stops",
     "palindrome_pairs",
     "matchsticks_to_square",
+    "generate_parentheses",
 ]
