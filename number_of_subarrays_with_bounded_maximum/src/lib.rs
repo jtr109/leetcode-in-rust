@@ -4,7 +4,7 @@ impl Solution {
     pub fn num_subarray_bounded_max(nums: Vec<i32>, left: i32, right: i32) -> i32 {
         let mut count = 0;
         let mut left_boundary = 0;
-        let mut at_most_left = 0; // 从左往右最后一个大于等于 left 的元素对应的索引
+        let mut at_most_left = 0; // 从左往右最后一个大于等于 left 的元素对应的索引右侧的索引（at_most_left - left_boundary 可以得到左侧的偏移量）
         for right_boundary in 0..nums.len() {
             if nums[right_boundary] > right {
                 // subarray 中出现大于 right 的数字，销毁
@@ -12,10 +12,10 @@ impl Solution {
                 left_boundary = right_boundary as i32 + 1;
             } else if nums[right_boundary] < left {
                 // 从 left_boundary 到 at_most_left 之间移动左边界，形成的子集都符合要求。
-                count += at_most_left - left_boundary + 1;
+                count += at_most_left - left_boundary;
             } else {
-                at_most_left = right_boundary as i32;
-                count += at_most_left - left_boundary + 1;
+                at_most_left = right_boundary as i32 + 1;
+                count += at_most_left - left_boundary;
             }
         }
         count as i32
