@@ -13,6 +13,10 @@ name = "binary_tree_postorder_traversal"
 version = "0.1.0"
 
 [[package]]
+name = "construct_binary_tree_from_preorder_and_inorder_traversal"
+version = "0.1.0"
+
+[[package]]
 name = "construct_target_array_with_multiple_sums"
 version = "0.1.0"
 
@@ -53,6 +57,10 @@ name = "flatten_binary_tree_to_linked_list"
 version = "0.1.0"
 
 [[package]]
+name = "generate_parentheses"
+version = "0.1.0"
+
+[[package]]
 name = "implement_queue_using_stacks"
 version = "0.1.0"
 
@@ -69,6 +77,10 @@ name = "jump_game_ii"
 version = "0.1.0"
 
 [[package]]
+name = "jump_game_vi"
+version = "0.1.0"
+
+[[package]]
 name = "kth_largest"
 version = "0.1.0"
 
@@ -78,6 +90,10 @@ version = "0.1.0"
 
 [[package]]
 name = "longest_palindromic_substring"
+version = "0.1.0"
+
+[[package]]
+name = "matchsticks_to_square"
 version = "0.1.0"
 
 [[package]]
@@ -121,11 +137,27 @@ name = "minimum_moves_to_equal_elements_ii"
 version = "0.1.0"
 
 [[package]]
+name = "minumum_number_of_refueling_stops"
+version = "0.1.0"
+
+[[package]]
+name = "my_calendar_i"
+version = "0.1.0"
+
+[[package]]
 name = "non_decreasing_array"
 version = "0.1.0"
 
 [[package]]
+name = "number_of_subarrays_with_bounded_maximum"
+version = "0.1.0"
+
+[[package]]
 name = "open_the_lock"
+version = "0.1.0"
+
+[[package]]
+name = "palindrome_pairs"
 version = "0.1.0"
 
 [[package]]
@@ -154,6 +186,10 @@ version = "0.1.0"
 
 [[package]]
 name = "search_suggestions_system"
+version = "0.1.0"
+
+[[package]]
+name = "stone_game_vii"
 version = "0.1.0"
 
 [[package]]

@@ -43,4 +43,13 @@ members = [
     "maximum_performance_of_a_team",
     "longest_consecutive_sequence",
     "min_cost_climbing_stairs",
+    "construct_binary_tree_from_preorder_and_inorder_traversal",
+    "jump_game_vi",
+    "my_calendar_i",
+    "stone_game_vii",
+    "minumum_number_of_refueling_stops",
+    "palindrome_pairs",
+    "matchsticks_to_square",
+    "generate_parentheses",
+    "number_of_subarrays_with_bounded_maximum",
 ]
