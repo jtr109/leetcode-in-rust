@@ -149,6 +149,10 @@ name = "non_decreasing_array"
 version = "0.1.0"
 
 [[package]]
+name = "number_of_subarrays_with_bounded_maximum"
+version = "0.1.0"
+
+[[package]]
 name = "open_the_lock"
 version = "0.1.0"
 

@@ -51,4 +51,5 @@ members = [
     "palindrome_pairs",
     "matchsticks_to_square",
     "generate_parentheses",
+    "number_of_subarrays_with_bounded_maximum",
 ]
