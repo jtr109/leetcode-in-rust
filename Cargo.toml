@@ -52,4 +52,5 @@ members = [
     "matchsticks_to_square",
     "generate_parentheses",
     "number_of_subarrays_with_bounded_maximum",
+    "range_sum_query_mutable",
 ]

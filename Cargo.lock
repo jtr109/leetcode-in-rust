@@ -173,6 +173,10 @@ name = "range_sum_query_2d"
 version = "0.1.0"
 
 [[package]]
+name = "range_sum_query_mutable"
+version = "0.1.0"
+
+[[package]]
 name = "reverse_integer"
 version = "0.1.0"
 
