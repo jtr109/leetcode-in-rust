@@ -3,27 +3,33 @@ pub struct Solution {}
 impl Solution {
     pub fn add_strings(num1: String, num2: String) -> String {
         let max_length = num1.len().max(num2.len());
-        let mut digits1 = num1
+        let mut reversed_digits1 = num1
             .chars()
             .rev()
             .map(|c| c.to_digit(10).unwrap() as u64)
             .collect::<Vec<u64>>();
-        let mut digits2 = num2
+        let mut reversed_digits2 = num2
             .chars()
             .rev()
             .map(|c| c.to_digit(10).unwrap() as u64)
             .collect::<Vec<u64>>();
-        while digits1.len() < max_length {
-            digits1.push(0);
+        while reversed_digits1.len() < max_length {
+            reversed_digits1.push(0);
         }
-        while digits2.len() < max_length {
-            digits2.push(0);
+        while reversed_digits2.len() < max_length {
+            reversed_digits2.push(0);
         }
-        (0..max_length)
-            .fold(0, |acc, i| {
-                acc * 10 + digits1[max_length - i - 1] + digits2[max_length - i - 1]
-            })
-            .to_string()
+        let mut reversed_res = vec![];
+        let mut digit = 0;
+        for i in 0..max_length {
+            let sum = digit + reversed_digits1[i] + reversed_digits2[i];
+            reversed_res.push(sum % 10);
+            digit = sum / 10;
+        }
+        if digit != 0 {
+            reversed_res.push(digit);
+        }
+        reversed_res.iter().rev().map(|d| d.to_string()).collect()
     }
 }
 
