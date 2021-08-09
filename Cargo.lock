@@ -3,6 +3,10 @@
 version = 3
 
 [[package]]
+name = "add_strings"
+version = "0.1.0"
+
+[[package]]
 name = "ambiguous_coordinates"
 version = "0.1.0"
 

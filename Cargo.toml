@@ -54,4 +54,5 @@ members = [
     "number_of_subarrays_with_bounded_maximum",
     "range_sum_query_mutable",
     "n_ary_tree_level_order_traversal",
+    "add_strings",
 ]
